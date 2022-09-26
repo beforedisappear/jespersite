@@ -16,7 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from mainapp.views import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('mainapp.urls')),
+    path('', include('mainapp.urls')), 
 ]
+
+#ссылка на фукнцию обработчик страницы 404
+handler404 = PageNotFound
