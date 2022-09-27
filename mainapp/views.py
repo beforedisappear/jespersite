@@ -1,11 +1,10 @@
-from logging import exception
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 
-# Create your views here.
+menu = ['Экономика', 'Кино', 'Игры', 'Разработка и IT', 'Поиск', 'Войти']
 
 def index(request):
-    return HttpResponse('Hello')
+    return render(request, 'mainapp/index.html', {'menu': menu, 'title': 'Главная страница'})
 
 def about(request):
     return HttpResponse('<h1>О сайте</h1>')
