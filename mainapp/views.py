@@ -7,6 +7,9 @@ from django.http import HttpResponse, HttpResponseNotFound
 def index(request):
     return HttpResponse('Hello')
 
+def about(request):
+    return HttpResponse('<h1>О сайте</h1>')
+
 #обработка исключения при несовпадении шаблона
 def PageNotFound (request, exception):
     return HttpResponseNotFound('<h>Страница не найдена</h>')
