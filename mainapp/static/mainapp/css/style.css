@@ -1,8 +1,16 @@
 /* оформление css | хранение каскадных таблицы стилей */
 
-.navigation__items {
-   top: 0;
-   left: 0;
-   position: absolute;
- }
- 
+.header {
+	background: #a9f5ff;
+	height: 53px;
+	box-shadow: 0 1px 2px 1px rgba(0,0,0,.1);
+	-webkit-box-shadow: 0 1px 2px 1px rgba(0,0,0,.1);
+}
+
+.header:after {
+   width: 0;
+   height: 0;
+   clear: both;
+   content: '';
+   display: block; 
+}
