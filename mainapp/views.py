@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 
-menu = ['Экономика', 'Кино', 'Игры', 'Разработка / IT', 'Поиск', 'Войти']
+menu = ['Экономика', 'Разработка / IT', 'Кино', 'Игры', 'Поиск', 'Войти']
+
 
 def index(request):
     return render(request, 'mainapp/index.html', {'menu': menu, 'title': 'Главная страница'})
