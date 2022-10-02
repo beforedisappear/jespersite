@@ -1,10 +1,11 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 
 from .views import *
 
 #name - имя страницы (неявный url адрес)
 urlpatterns = [
     path('', index, name='home'),
-    path('about/', about, name='about')
+    path('economy/', economy, name='economy'),
+    path('develoment', dev, name='develoment'),
+    path('life', life, name='life'),
 ]
