@@ -8,12 +8,23 @@
 <!-- хранение служебной информации о странице -->
 <head>
    <title>{{ title }}</title>
+   <meta charset="UTF-8">
+    <!-- отображение сайта на других устройствах-->
+    <meta name='viewport' content='width=deivice-width', initial-scale=1.0>
    <!-- подключение файла оформления -->
    <link type='text/css' href="{% static 'mainapp/css/style.css' %}" rel='stylesheet' />
    <!-- загрузка иконки -->
    <link rel='shortcut icon' href="{% static 'mainapp/images/test-icon.ico'%}" type="image/x-icon"/>
-   <!-- отображение сайта на других устройствах-->
-   <meta name='viewport' content='width=deivice-width', initial-scale=1.0>
+
+   <!-- Bootstrap reboot (для сброса стилей) -->
+	<link rel="stylesheet" href="static/css/bootstrap-reboot.min.css">
+
+	<!-- Bootstrap сетка -->
+	<link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
+
+	<!-- Шрифты с Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
 </head>
 
@@ -21,22 +32,24 @@
 
 {% block mainmenu %}
 
-<div id='mainWrap'>
-  <div class='header'>
-    <!-- иконка нашего сайта-->
-    <header class="headerNav">
-      <div class="logo">
-        <a href="#"><img src="{% static 'mainapp/images/test-icon.ico'%}" width="75" height="50" alt="News"/></a>
-      </div>
-      <ul class="headerNav">
-      {% for m in menu %}
-        <li><a href="#">{{m}}</a></li>
-      {% endfor %}
+<nav class='navbar'>
+  <div class='container'>
+    <div class="navbar-brand">
+      <a href="#"><img src="{% static 'mainapp/images/test-icon.ico'%}" width="75" height="50" alt="News"/></a>
+    </div>
+
+    <div class='navbar-wrap'>
+      <ul class='navbar-menu'>
+        <li><a href='#'>Экономика</a></li>
+        <li><a href='#'>Разработка | IT</a></li>
+        <li><a href='#'>Жизнь</a></li>
       </ul>
-    </header>
-  </div> 
-</div>
- 
+    </div>
+
+  </div>
+</nav>
+
+
 
 {% endblock mainmenu %}
 
