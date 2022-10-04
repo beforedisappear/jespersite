@@ -17,10 +17,10 @@
    <link rel='shortcut icon' href="{% static 'mainapp/images/test-icon.ico'%}" type="image/x-icon"/>
 
    <!-- Bootstrap reboot (для сброса стилей) -->
-	<link rel="stylesheet" href="static/css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="static/mainapp/libs/bootstrap-reboot.min.css">
 
 	<!-- Bootstrap сетка -->
-	<link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="static/mainapp/libs/bootstrap-grid.min.css">
 
 	<!-- Шрифты с Google Fonts -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -31,23 +31,37 @@
 <body>
 
 {% block mainmenu %}
+<div class='wrapper'>
 
-<nav class='navbar'>
-  <div class='container'>
-    <div class="navbar-brand">
-      <a href="#"><img src="{% static 'mainapp/images/test-icon.ico'%}" width="75" height="50" alt="News"/></a>
-    </div>
+  <div class='content'>
 
-    <div class='navbar-wrap'>
-      <ul class='navbar-menu'>
-        <li><a href='#'>Экономика</a></li>
-        <li><a href='#'>Разработка | IT</a></li>
-        <li><a href='#'>Жизнь</a></li>
-      </ul>
+    <div class='navbar'>
+      <!-- выше был nav 0_0 -->
+      <div class='container'>
+        <a href="#" class='navbar-brand'>SITE</a>
+    
+        <div class='navbar-wrap'>
+          <ul class='navbar-menu'>
+            <li><a href='#'>Экономика</a></li>
+            <li><a href='#'>Разработка | IT</a></li>
+            <li><a href='#'>Жизнь</a></li> 
+          </ul>
+        </div>
+    
+      </div>
     </div>
 
   </div>
-</nav>
+
+
+  <div class='footer'>
+
+  </div>
+
+
+<div>
+
+
 
 
 
