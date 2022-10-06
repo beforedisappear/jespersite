@@ -2,8 +2,8 @@ from django.db import models
 
 class articles(models.Model):
    title = models.CharField(max_length=100)
-   creator = models.CharField(max_length=20)
    subtitle = models.CharField(max_length=50)
+   creator = models.CharField(max_length=20)
    content = models.TextField()
    photo = models.ImageField()
    section = models.TextField()

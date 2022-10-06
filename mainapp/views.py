@@ -1,20 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 
-menu = ['Экономика', 'Разработка | IT', 'Жизнь', 'Поиск', 'Войти']
+menu = ['Экономика', 'Разработка | IT', 'Жизнь']
 
 
 def index(request):
     return render(request, 'mainapp/index.html', {'menu': menu, 'title': 'Главная страница'})
 
 def economy(request):
-    return HttpResponse('<h1>Экономика</h1>')
+    return render(request, 'mainapp/economy.html', {'menu': menu, 'title': 'Экономика'})
 
 def dev(request):
-    return HttpResponse('<h1>Разработка и IT</h1>')
+    return render(request, 'mainapp/dev.html', {'menu': menu, 'title': 'Разработка | IT'})
 
 def life(request):
-    return HttpResponse('<h1>life</h1>')
+    return render(request, 'mainapp/life.html', {'menu': menu, 'title': 'Жизнь'})
 
 #обработка исключения при несовпадении шаблона
 def PageNotFound (request, exception):

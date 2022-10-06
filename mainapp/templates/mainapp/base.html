@@ -7,20 +7,21 @@
 
 <!-- хранение служебной информации о странице -->
 <head>
-   <title>{{ title }}</title>
-   <meta charset="UTF-8">
-    <!-- отображение сайта на других устройствах-->
-    <meta name='viewport' content='width=deivice-width', initial-scale=1.0>
-   <!-- подключение файла оформления -->
-   <link type='text/css' href="{% static 'mainapp/css/style.css' %}" rel='stylesheet' />
-   <!-- загрузка иконки -->
-   <link rel='shortcut icon' href="{% static 'mainapp/images/test-icon.ico'%}" type="image/x-icon"/>
+  <title>{{ title }}</title>
+  <meta charset="UTF-8">
+  <!-- отображение сайта на других устройствах-->
+  <meta name='viewport' content='width=deivice-width', initial-scale=1.0>
+  <!-- подключение файла оформления -->
+  <link type='text/css' href="{% static 'mainapp/css/style.css' %}" rel='stylesheet' />
+  <!-- загрузка иконки -->
+  <link rel='shortcut icon' href="{% static 'mainapp/images/test-icon.ico'%}" type="image/x-icon"/>
 
-   <!-- Bootstrap reboot (для сброса стилей) -->
-	<link rel="stylesheet" href="static/mainapp/libs/bootstrap-reboot.min.css">
+  <!-- Bootstrap reboot (для сброса стилей) -->
+  <link rel="stylesheet" href="{% static 'mainapp/libs/bootstrap-reboot.min.css'%}">
 
 	<!-- Bootstrap сетка -->
-	<link rel="stylesheet" href="static/mainapp/libs/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="{% static 'mainapp/libs/bootstrap-grid.min.css' %}">
+
 
 	<!-- Шрифты с Google Fonts -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -38,13 +39,13 @@
     <div class='navbar'>
       <!-- выше был nav 0_0 -->
       <div class='container'>
-        <a href="#" class='navbar-brand'>SITE</a>
+        <a href="{% url 'home' %}" class='navbar-brand'>SITE</a>
     
         <div class='navbar-wrap'>
           <ul class='navbar-menu'>
-            <li><a href='#'>Экономика</a></li>
-            <li><a href='#'>Разработка | IT</a></li>
-            <li><a href='#'>Жизнь</a></li> 
+            <li><a href='{% url 'economy' %}'>Экономика</a></li>
+            <li><a href='{% url 'dev' %}'>Разработка | IT</a></li>
+            <li><a href='{% url 'life' %}'>Жизнь</a></li> 
           </ul>
         </div>
     
