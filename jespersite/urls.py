@@ -15,13 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 
 from mainapp.views import *
+from jespersite import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls')), 
 ]
 
-#ссылка на фукнцию обработчик страницы 404
+#в режиме отладки добавление ещё одного маршрута для медиа файлов
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+#ссылка на функцию обработчик страницы 404
 handler404 = PageNotFound

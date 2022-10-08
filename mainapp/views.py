@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponseNotFound
 
 menu = ['Экономика', 'Разработка | IT', 'Жизнь']
 
@@ -15,6 +15,9 @@ def dev(request):
 
 def life(request):
     return render(request, 'mainapp/life.html', {'menu': menu, 'title': 'Жизнь'})
+
+def show_article(request, post_id):
+    return 
 
 #обработка исключения при несовпадении шаблона
 def PageNotFound (request, exception):
