@@ -3,7 +3,7 @@ from django.db import models
 
 #хранение контента
 class articles(models.Model):
-   section = models.CharField(max_lengt=15)
+   section = models.CharField(max_length=15)
    title = models.CharField(max_length=100)
    slug = models.SlugField(max_length=1001)
    subtitle = models.CharField(max_length=50)
@@ -13,7 +13,7 @@ class articles(models.Model):
    photo = models.ImageField(height_field=None, width_field=None, upload_to='photos/%Y/%m/%d')
    time_create = models.DateTimeField(auto_now_add=True)
    is_published = models.BooleanField(default=True)
-   com = models.ManyToManyField('comments', on_delete=models.CASCADE, null=True)
+   #com = models.ManyToManyField('comments', null=True) #fix connection
    
 class comments(models.Model):
    nickname = models.CharField(max_length=20, db_index=True)
