@@ -1,5 +1,5 @@
-from email.policy import default
 from django.db import models
+from django.contrib.auth.models import User
 
 #хранение контента
 class articles(models.Model):
@@ -7,16 +7,16 @@ class articles(models.Model):
    title = models.CharField(max_length=100)
    slug = models.SlugField(max_length=1001)
    subtitle = models.CharField(max_length=50)
-   creator = models.CharField(max_length=20)
-   avatar = models.ImageField(height_field=None, width_field=None)
-   content = models.TextField() #filefield?
-   photo = models.ImageField(height_field=None, width_field=None, upload_to='photos/%Y/%m/%d')
+   author = models.ForeignKey(User, on_delete=models.CASCADE)
+   avatar = models.ImageField(height_field=None, width_field=None) # ?
+   text = models.TextField(blank=True)
+   content = models.FileField(height_field=None, width_field=None, upload_to='files/%Y/%m/%d')
    time_create = models.DateTimeField(auto_now_add=True)
    is_published = models.BooleanField(default=True)
-   #com = models.ManyToManyField('comments', null=True) #fix connection
    
 class comments(models.Model):
-   nickname = models.CharField(max_length=20, db_index=True)
+   article_title = models.ForeignKey(articles, on_delete=models.CASCADE)
+   author = models.ForeignKey(User, on_delete=models.CASCADE)
    time_create = models.DateTimeField(auto_now_add=True)
-   cmnt = models.TextField()
+   text = models.TextField()
    
