@@ -1,11 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponseNotFound
+from .models import *
 
 menu = ['Экономика', 'Разработка | IT', 'Жизнь']
 
 
 def index(request):
-    return render(request, 'mainapp/index.html', {'menu': menu, 'title': 'Главная страница'})
+    list_articles = articles.objects.all()
+    context = {
+        'posts': list_articles,
+        'menu': menu,
+        'title': 'Главная страница' 
+    }
+    return render(request, 'mainapp/index.html', context=context)
 
 def economy(request):
     return render(request, 'mainapp/economy.html', {'menu': menu, 'title': 'Экономика'})
