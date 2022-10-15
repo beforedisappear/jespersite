@@ -38,7 +38,7 @@
       <!-- выше был nav 0_0 -->
       <div class='container'>
         <a href="{% url 'home' %}" class='navbar-brand'>SITE</a>
-    
+  
         <div class='navbar-wrap'>
           <ul class='navbar-menu'>
             <li><a href='{% url 'economy' %}'>Экономика</a></li>
@@ -46,23 +46,17 @@
             <li><a href='{% url 'life' %}'>Жизнь</a></li> 
           </ul>
         </div>
-    
+
       </div>
     </div>
+{% block content %}
+{% endblock %}
 
   </div>
 
-
-  <div class='footer'>
-
-  </div>
-
+  <div class='footer'></div>
 
 <div>
-
-
-
-
 
 {% endblock mainmenu %}
 
