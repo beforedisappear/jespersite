@@ -8,7 +8,7 @@ class articles(models.Model):
    section = models.CharField(max_length=15, choices=SECTIONS)
    title = models.CharField(max_length=100, verbose_name='Заголовок')
    slug = models.SlugField(max_length=1001, unique=True, db_index=True, verbose_name='URL')
-   subtitle = models.CharField(max_length=50, verbose_name='Подзаголовок')
+   subtitle = models.CharField(max_length=50, verbose_name='Подзаголовок', blank=True)
    #встроенная модель пользователя
    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
    text = models.TextField(blank=True, verbose_name='Текст')
