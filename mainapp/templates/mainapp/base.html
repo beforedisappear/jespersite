@@ -25,6 +25,8 @@
 	<!-- Шрифты с Google Fonts -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -35,6 +37,7 @@
   <div class='content'>
 
     <div class='navbar'>
+
       <!-- выше был nav 0_0 -->
       <div class='container'>
         <a href="{% url 'home' %}" class='navbar-brand'>SITE</a>
@@ -49,8 +52,9 @@
 
       </div>
     </div>
-{% block content %}
-{% endblock %}
+
+  {% block content %} 
+  {% endblock %}
 
   </div>
 
