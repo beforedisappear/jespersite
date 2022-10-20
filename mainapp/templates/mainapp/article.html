@@ -3,6 +3,87 @@
 
 {% block content %}
 
+<div class="container bootstrap snippets bootdey">
+   <div class="row justify-content-md-center">
+      <div class="col-md-8">
+         <div class="col-sm-12">
+            <div class="panel panel-white post panel-shadow">
+               <div class="post-heading">
 
+                  <!--user avatar-->
+                  <div class="pull-left image">
+                     <img src="https://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                  </div>
+                  <!--info about creator-->
+                  <div class="pull-left meta">
+                     <div class="title h5">
+                        <a href="#"><b>{{post.author}}</b></a>
+                     </div>
+                     <h6 class="text-muted time">{{post.time_create}}</h6>
+                     <div class="title h3">
+                        {{post.title}}
+                     </div>
+                     <div class="title h5">
+                        <p>{{post.subtitle}}</p>
+                     </div>
+                  </div>
+                  
+                  <!--title-->
+
+               </div>
+
+               <!--article image-->
+               <div class="post-image">
+                  <img src="{{post.content.url}}" class="image" alt="image post">
+               </div>
+
+               <div class="post-description">
+                  <div class="title h5">
+                     <p>{{post.text}}</p>
+                  </div>
+                  <!-- likes and reposts --> 
+                  <div class="stats">
+                     <a href="#" class="btn btn-default stat-item">
+                         <i class="fa fa-thumbs-up icon"></i>228
+                     </a>
+                     <a href="#" class="btn btn-default stat-item">
+                         <i class="fa fa-share icon"></i>128
+                     </a>
+                 </div>
+               </div>
+
+               <div class="post-footer">
+
+                  <!--comments fields-->
+                  <div class="input-group"> 
+                     <input class="form-control" placeholder="Add a comment" type="text">
+                     <span class="input-group-addon">
+                         <a href="#"><i class="fa fa-edit"></i></a>  
+                     </span>
+                  </div>
+                 
+                  <!--comments-->
+                  <ul class="comments-list">
+                     <li class="comment">
+                        <a class="pull-left" href="#">
+                           <img class="avatar" src="https://bootdey.com/img/Content/user_3.jpg" alt="avatar">
+                        </a>
+                        <div class="comment-body">
+                           <div class="comment-heading">
+                                 <h4 class="user">Full name 1</h4>
+                                 <h5 class="time">7 minutes ago</h5>
+                           </div>
+                           <p>This is a comment bla bla bla</p>
+                        </div>
+                     </li>
+                  </ul>
+
+               </div>
+               
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 
 {% endblock %}

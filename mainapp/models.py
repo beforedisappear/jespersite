@@ -4,11 +4,11 @@ from django.urls import reverse
 
 #хранение контента
 class articles(models.Model):
-   SECTIONS = [('Economy', 'Экономика'), ('Dev/IT', 'Разработка | IT'), ('Life', 'Жизнь')]
+   SECTIONS = [('economy', 'Экономика'), ('dev', 'Разработка | IT'), ('life', 'Жизнь')]
    section = models.CharField(max_length=15, choices=SECTIONS)
    title = models.CharField(max_length=100, verbose_name='Заголовок')
    slug = models.SlugField(max_length=1001, unique=True, db_index=True, verbose_name='URL')
-   subtitle = models.CharField(max_length=50, verbose_name='Подзаголовок', blank=True)
+   subtitle = models.CharField(max_length=300, verbose_name='Подзаголовок', blank=True)
    #встроенная модель пользователя
    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
    text = models.TextField(blank=True, verbose_name='Текст')
@@ -18,7 +18,7 @@ class articles(models.Model):
    
    #формирование маршрута к конкретной записи
    def get_absolute_url(self):
-       return reverse("post", kwargs={"post_id": self.pk})
+      return reverse("article", kwargs={"post_slug": self.slug})
     
    #вложенный класс для настройки админ панели
    class Meta:
