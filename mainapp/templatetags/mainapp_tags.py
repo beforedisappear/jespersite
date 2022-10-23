@@ -17,13 +17,13 @@ def get_articles():
 
 @register.simple_tag(name='geteconomy')
 def get_economy():
-   return articles.objects.all(SECTIONS='Экономика')
+   return articles.objects.filter(section='economy')
 
 
 @register.simple_tag(name='getdev')
 def get_economy():
-   return articles.objects.all(SECTIONS='Разработка | IT')
+   return articles.objects.filter(section='dev')
 
 @register.simple_tag(name='getlife')
 def get_economy():
-   return articles.objects.all(SECTIONS='Жизнь')
+   return articles.objects.filter(section='life')

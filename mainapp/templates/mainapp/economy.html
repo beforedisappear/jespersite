@@ -1,2 +1,11 @@
 <!--section of the site containing economic content-->
 {% extends 'mainapp/base.html' %}
+{% load mainapp_tags %}
+
+{% block content %}
+
+{% geteconomy as posts %}
+
+{% include 'mainapp/list_articles.html' %}
+
+{% endblock %}

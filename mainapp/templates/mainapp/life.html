@@ -1,3 +1,11 @@
 <!--section of the site containing life content-->
 {% extends 'mainapp/base.html' %}
+{% load mainapp_tags %}
 
+{% block content %}
+
+{% getlife as posts %}
+
+{% include 'mainapp/list_articles.html' %}
+
+{% endblock %}
