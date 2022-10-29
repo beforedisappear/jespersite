@@ -9,6 +9,6 @@ class articlesAdmin(admin.ModelAdmin):
    # по каким поляем работает поиск
    search_fields = ('title', 'subtitle', 'author', 'text')
    # автоматическое формирование слага
-   prepopulated_fields = {'slug': ('title',)} # добавить pk !
+   #prepopulated_fields = {'slug': ('title',)} # добавить pk !
 
 admin.site.register(articles, articlesAdmin)

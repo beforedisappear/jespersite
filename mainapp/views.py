@@ -1,12 +1,14 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseNotFound
+
+from .forms import *
 from .models import *
 
 menu = ['Экономика', 'Разработка | IT', 'Жизнь']
 
 
 def index(request):
-    list_articles = articles.objects.all()
+    list_articles = articles.objects.order_by('-time_create')
     context = {
         'posts': list_articles,
         'menu': menu,
@@ -32,6 +34,18 @@ def show_article(request, post_slug):
         'title': article.title,
     }
     return render(request, 'mainapp/article.html', context=context)
+
+def personal_page(request):
+    # сохранение введеных данных в случае их невалидности
+    if request.method == 'POST':
+        form = AddArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            #добавление новой записи в БД
+            form.save()
+            return redirect('home')
+    else:
+        form = AddArticleForm()
+    return render(request, 'mainapp/p.html', {'form': form, 'menu': menu, 'title': 'ЛК'})
 
 #обработка исключения при несовпадении шаблона
 def PageNotFound (request, exception):

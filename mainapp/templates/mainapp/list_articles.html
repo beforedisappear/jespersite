@@ -16,8 +16,8 @@
              {% endif %}
              {% if p.content %}
              <div class='image-wrapper'>
-               <a class='image-wrapper image-zoom cboxElement' href="#">
-                 <img src='{{p.content.url}}' alt="Photo of Blog">
+               <a class='image-wrapper image-zoom cboxElement' href="{{ p.get_absolute_url }}">
+                 <img src='{{p.content.url}}' alt="Photo of Blog" width='523' height=''>
                  <div class="image-overlay"></div> 
                </a>
              </div>

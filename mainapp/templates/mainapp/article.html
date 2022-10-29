@@ -32,11 +32,13 @@
 
                </div>
 
+               {% if post.content %}
                <!--article image-->
                <div class="post-image">
                   <img src="{{post.content.url}}" class="image" alt="image post">
                </div>
-
+               {% endif %}
+               
                <div class="post-description">
                   <div class="title h5">
                      <p>{{post.text}}</p>

@@ -128,3 +128,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')        # формирование пути к каталогу media
 MEDIA_URL = '/media/'                               # префикс url адреса для медиа  файлов
+
+#AUTOSLUG_SLUGIFY_FUNCTION = 'autoslug.utils.translit_long'

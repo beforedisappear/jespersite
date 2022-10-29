@@ -9,4 +9,5 @@ urlpatterns = [
     path('dev/', dev, name='dev'),
     path('life/', life, name='life'),
     path('article/<slug:post_slug>/', show_article, name='article'),
+    path('p/', personal_page, name='personal-page'),
 ]
