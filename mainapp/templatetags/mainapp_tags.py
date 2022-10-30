@@ -1,4 +1,4 @@
-from atexit import register
+import os
 from django import template
 from mainapp.models import *
 

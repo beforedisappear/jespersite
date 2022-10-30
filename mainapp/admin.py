@@ -7,7 +7,7 @@ class articlesAdmin(admin.ModelAdmin):
    # кликабельность поля
    list_display_links = ('id', 'title')
    # по каким поляем работает поиск
-   search_fields = ('title', 'subtitle', 'author', 'text')
+   search_fields = ['title', 'subtitle', 'text'] # 'user__author' ??
    # автоматическое формирование слага
    #prepopulated_fields = {'slug': ('title',)} # добавить pk !
 

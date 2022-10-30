@@ -1,8 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.core.validators import FileExtensionValidator
 
 from uuslug import uuslug
+
+
 
 
 #хранение контента
@@ -15,9 +18,14 @@ class articles(models.Model):
    #встроенная модель пользователя
    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
    text = models.TextField(blank=True, verbose_name='Текст')
-   content = models.FileField(upload_to='files/%Y/%m/%d', blank=True)
    time_create = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
    is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
+   content = models.FileField(upload_to='files/%Y/%m/%d', blank=True, validators=[
+      FileExtensionValidator(
+         allowed_extensions=['jpg', 'png', 'mp4', 'gif', 'mov', 'heic'], 
+         message='Некорректный формат файла!',
+         )
+      ])
    
    #формирование маршрута к конкретной записи
    def get_absolute_url(self):
@@ -30,8 +38,8 @@ class articles(models.Model):
    #транслитерация слага
    def save(self, *args, **kwargs):
       self.slug = uuslug(self.title, instance=self)
-      super(articles, self).save(*args, **kwargs)
-       
+      super(articles, self).save(*args, **kwargs) 
+   
    #вложенный класс для настройки админ панели
    class Meta:
       verbose_name = 'Статьи'
