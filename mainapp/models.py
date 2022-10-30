@@ -39,6 +39,11 @@ class articles(models.Model):
    def save(self, *args, **kwargs):
       self.slug = uuslug(self.title, instance=self)
       super(articles, self).save(*args, **kwargs) 
+      
+   def get_file_type(self):
+      a = self.content.name.find('.')+1
+      if self.content.name[a:] in ['jpg', 'png', 'heic']: return 'photo'
+      elif self.content.name[a:] in  ['mp4', 'mov', 'heic']: return 'video'
    
    #вложенный класс для настройки админ панели
    class Meta:
