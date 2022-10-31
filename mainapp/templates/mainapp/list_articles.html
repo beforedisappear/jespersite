@@ -25,15 +25,14 @@
             </div>
             {% endif %}
 
+            <!-- experimental video output-->
             {% if p.get_file_type == 'video' %}
             <div class='image-wrapper'>
-              <a class='image-wrapper image-zoom cboxElement' href="{{ p.get_absolute_url }}">
-                <video src='{{p.content.url}}' alt="Photo of Blog" width='523' height=''>
-                <div class="image-overlay"></div> 
-              </a>
+                <video width='523' height='' controls>
+                  <source src="{{ p.content.url }}" type="video/mp4"></source>
+                </video>
             </div>
             {% endif %}
-
 
           {% endif %}
             <a href="{{ p.get_absolute_url }}"><i class="fa fa-angle-double-right"></i> Continue reading</a>
