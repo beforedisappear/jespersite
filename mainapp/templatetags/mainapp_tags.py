@@ -17,13 +17,14 @@ def get_articles():
 
 @register.simple_tag(name='geteconomy')
 def get_economy():
-   return articles.objects.filter(section='economy')
+   return articles.objects.filter(is_published=True, section='economy').order_by('-time_create')
 
 
 @register.simple_tag(name='getdev')
 def get_economy():
-   return articles.objects.filter(section='dev')
+   return articles.objects.filter(is_published=True, section='dev').order_by('-time_create')
+
 
 @register.simple_tag(name='getlife')
 def get_economy():
-   return articles.objects.filter(section='life')
+   return articles.objects.filter(is_published=True, section='life').order_by('-time_create')

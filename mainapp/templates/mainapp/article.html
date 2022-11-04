@@ -20,16 +20,19 @@
                         <a href="#"><b>{{post.author}}</b></a>
                      </div>
                      <h6 class="text-muted time">{{post.time_create}}</h6>
-                     <div class="title h3">
-                        {{post.title}}
-                     </div>
-                     <div class="title h5">
-                        <p>{{post.subtitle}}</p>
-                     </div>
+                     
                   </div>
-                  
-                  <!--title-->
+                      
+               </div>
 
+               <!--title and subtitle-->
+               <div class="post-description"> 
+                  <div class="title h3">
+                     {{post.title}}
+                  </div>
+                  <div class="title h5">
+                     <p>{{post.subtitle}}</p>
+                  </div>
                </div>
 
                {% if post.content %}
@@ -41,7 +44,7 @@
                
                <div class="post-description">
                   <div class="title h5">
-                     <p>{{post.text}}</p>
+                     <p align="justify">{{post.text}}</p>
                   </div>
                   <!-- likes and reposts --> 
                   <div class="stats">

@@ -5,9 +5,6 @@ from django.core.validators import FileExtensionValidator
 
 from uuslug import uuslug
 
-
-
-
 #хранение контента
 class articles(models.Model):
    SECTIONS = [('economy', 'Экономика'), ('dev', 'Разработка | IT'), ('life', 'Жизнь')]

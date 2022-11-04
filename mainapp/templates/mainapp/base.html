@@ -14,8 +14,9 @@
   <meta name='viewport' content='width=deivice-width', initial-scale=1.0>
   <!-- подключение файла оформления -->
   <link type='text/css' href="{% static 'mainapp/css/style.css' %}" rel='stylesheet' />
-  <!-- загрузка иконки -->
+  <!-- загрузка иконок -->
   <link rel='shortcut icon' href="{% static 'mainapp/images/test-icon.ico'%}" type="image/x-icon"/>
+  <link rel='shortcut icon' href="{% static 'mainapp/images/auth-icon.ico'%}" type="image/x-icon"/>
   <!-- Bootstrap reboot (для сброса стилей) -->
   <link rel="stylesheet" href="{% static 'mainapp/libs/bootstrap-reboot.min.css'%}">
 	<!-- Bootstrap сетка -->
@@ -27,8 +28,7 @@
   <!--article Bootstrap template-->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <!--article Bootstrap template post-->
-
-
+  
 </head>
 
 <body>
@@ -48,10 +48,18 @@
           <ul class='navbar-menu'>
             <li><a href='{% url 'economy' %}'>Экономика</a></li>
             <li><a href='{% url 'dev' %}'>Разработка | IT</a></li>
-            <li><a href='{% url 'life' %}'>Жизнь</a></li> 
+            <li><a href='{% url 'life' %}'>Жизнь</a></li>
           </ul>
         </div>
 
+        <!--icons-->
+        <div class='navbar-brand'>
+          <ul>
+            <a href='{% url 'personal-page' %}'><img class='icon' src="{% static 'mainapp/images/auth.ico' %}"></a>
+            <a href='https://t.me/jespersite' target="_blank"><img class='icon' src="{% static 'mainapp/images/tg-icon2.png' %}"></a>
+          </ul>
+        </div>
+        
       </div>
     </div>
 

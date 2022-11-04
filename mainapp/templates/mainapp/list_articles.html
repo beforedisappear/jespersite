@@ -6,7 +6,7 @@
       <div class='panel blog-container'>
         <div class='panel-body'>
           <small class="text-muted">
-            <a href='{{p.section}}'> {{ p.get_section_display }} |</a>
+            <a href='{% url p.section %}'> {{ p.get_section_display }} |</a>
             <a href='#'>{{p.author}} |</a>
             <a>{{p.time_create}}</a>
           </small>
