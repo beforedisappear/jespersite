@@ -14,16 +14,6 @@ body.lock {
   overflow: hidden;
 }
 
-.wrapper {
-  position: relative;
-  min-height: 100%;
-  background-color: #f6f6f6;
-}
-
-.content {
-  padding-bottom: 90px;
-}
-
 /* navbar styles */
 .navbar {
   width: 100%;
@@ -103,6 +93,16 @@ body.lock {
   width: 100%;
   height: 80px;
   background-color: #363839;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  background-color: #f6f6f6;
+}
+
+.content {
+  padding-bottom: 90px;
 }
 
 #footer .txt {
@@ -446,6 +446,7 @@ max-height:280px;
   -webkit-border-radius: 50%;
 }
 
+
 .fb-user-details h3 {
   margin: 15px 0 0;
   font-size: 18px;
@@ -456,6 +457,7 @@ max-height:280px;
   color: #c3c3c3;
 }
 
+
 .fb-user-status {
   padding: 10px 0;
   line-height: 20px;
@@ -464,6 +466,7 @@ max-height:280px;
 .fb-time-action {
   padding: 15px 0;
 }
+
 
 .fb-border {
   border-top:1px solid #ebeef5;
@@ -512,6 +515,7 @@ max-height:280px;
 .fb-comments .cmt-details {
   padding-top: 5px;
 }
+
 
 .fb-comments .cmt-details a  {
   font-size: 14px;
