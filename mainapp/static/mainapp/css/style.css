@@ -634,3 +634,71 @@ max-height:280px;
   color:#000;
   text-decoration: none;
 }
+
+/* tg / vk / goggle button */
+
+.btn_telegram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #54aaeb;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #54aaeb, #54aaeb);
+  color: #ffffff;
+  text-decoration: none;
+  float: left;
+  margin: 0 10px;
+  width: 100px;
+}
+.btn_telegram:hover
+{
+  text-decoration: none;
+  color: #ffffff;
+  cursor: default;
+}
+
+.btn_vk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #0078ff;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #0078ff, #0078ff);
+  color: #ffffff;
+  text-decoration: none;
+  cursor: default;
+  float: left;
+  margin: 0 10px;
+  width: 100px;
+}
+.btn_vk:hover
+{
+  text-decoration: none;
+  color: #ffffff;
+  cursor: default;
+}
+
+.btn_google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #d62d20;
+  border-radius: 3px;
+  background: #54aaeb;
+  background: linear-gradient(to bottom, #d62d20, #d62d20);
+  color: #ffffff;
+  text-decoration: none;
+  cursor: default;
+  float: left;
+  margin: 0 10px;
+  width: 100px;
+}
+.btn_google:hover
+{
+  text-decoration: none;
+  color: #ffffff;
+  cursor: default;
+}
