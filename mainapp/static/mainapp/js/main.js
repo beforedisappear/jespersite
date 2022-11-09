@@ -140,6 +140,12 @@ function bodyUnlock()
       body.style.paddingRight = '0px';
       body.classList.remove('lock');
    }, timeout);
+   
+   unlock = false;
+   setTimeout(function ()
+   {
+      unlock = true;
+   }, timeout);
 }
 
 // закрытие popup по esc

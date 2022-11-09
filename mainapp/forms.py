@@ -2,7 +2,7 @@ from django import forms
 from .models import *
 
 class AddArticleForm(forms.ModelForm):
-   #констуктор для невыбранного значения
+   #констуктор для невыбранного значения формы
    def __init__(self, *args, **kwargs):
       super(AddArticleForm, self).__init__(*args, **kwargs)
       #self.fields['section'].empty_label = ' '
