@@ -1,4 +1,6 @@
-from django.urls import path
+from django.urls import path, include
+
+from django.conf.urls import *
 
 from .views import *
 
@@ -11,4 +13,7 @@ urlpatterns = [
     path('life/', life, name='life'),
     path('article/<slug:post_slug>/', ShowArtice.as_view(), name='article'),
     path('p/', personal_page, name='personal-page'),
+    
+    path('social-auth/', include('social_django.urls', namespace='social')),
 ]
+#'social.apps.django_app.urls'

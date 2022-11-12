@@ -9,10 +9,8 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
 from pathlib import Path
 import os
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +25,7 @@ SECRET_KEY = 'django-insecure-12jfma1_84e5a12!d%a+yz(coesh_73-b=2)^3j14&pur6dant
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', '127.0.0.1']
 
 
 # установленные приложения в нашем пакете
@@ -40,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainapp.apps.MainappConfig',
     'uuslug',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'jespersite.urls'
@@ -65,10 +65,35 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                'social_django.context_processors.backends', 
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.telegram.TelegramAuth',
+    'social_core.backends.vk.VKOAuth2',    
+)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '404096088666-7q3l3p5r0ts1mkh31ta9flhep2jkpe49.apps.googleusercontent.com' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' # Google Consumer Secret
+
+SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = '5777561664:AAEM6PVmJ689eUbSQXtHO4z502u0HDNCc5M'
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '51474603'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'AYwPymlZbqaQkNeFZaU4'
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
+
+                                
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'jespersite.wsgi.application'
 

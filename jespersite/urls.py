@@ -32,3 +32,4 @@ if settings.DEBUG:
 
 #ссылка на функцию обработчик страницы 404
 handler404 = PageNotFound
+

@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseNotFound
-from django.views.generic import ListView, DetailView
-
+from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.views import LoginView, LogoutView
 from .forms import *
 from .models import *
 
@@ -71,3 +71,10 @@ def personal_page(request):
 # обработка исключения при несовпадении шаблона
 def PageNotFound(request, exception):
     return HttpResponseNotFound('<h>Страница не найдена</h>')
+
+
+class RegisterUser(CreateView):
+    pass
+
+class LoginUser(LoginView):
+    pass
