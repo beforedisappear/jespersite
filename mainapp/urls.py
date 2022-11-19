@@ -12,6 +12,7 @@ urlpatterns = [
     path('dev/', dev, name='dev'),
     path('life/', life, name='life'),
     path('article/<slug:post_slug>/', ShowArtice.as_view(), name='article'),
+    path('logout/', logout_user, name='logout'),
     path('p/', personal_page, name='personal-page'),
     
     path('social-auth/', include('social_django.urls', namespace='social')),

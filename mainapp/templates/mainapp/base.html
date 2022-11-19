@@ -45,15 +45,29 @@
           <ul class='navbar-menu'>
             <li><a href="{% url 'economy' %}">Экономика</a></li>
             <li><a href="{% url 'dev' %}">Разработка | IT</a></li>
-            <li><a href="{% url 'life' %}">Общество</a></li>
+            <li><a href="{% url 'life' %}">Жизнь</a></li>
           </ul>
         </div>
 
         <!--icons-->
         <div class='navbar-brand'>
           <ul>
-            <a href='#popup' class='popup-link'><img class='icon' src="{% static 'mainapp/images/auth.ico' %}"></a>
-            <a href='https://t.me/jespersite' target="_blank"><img class='icon' src="{% static 'mainapp/images/tg-icon2.png' %}"></a>
+            {% if request.user.is_authenticated %}
+
+            <div class="dropdown">
+              <button class="dropbtn"><img class="icon2" src="{% static 'mainapp/images/user.ico' %}"></button>
+              <div class="dropdown-content">
+                <a href="{% url 'personal-page' %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
+                <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
+              </div>
+            </div>
+      
+            {% else %}
+
+              <a href="#popup" class='popup-link'><img class="icon" src="{% static 'mainapp/images/auth.ico' %}"></a>
+              
+            {% endif %}
+            <a href="https://t.me/jespersite" target="_blank"><img class='icon' src="{% static 'mainapp/images/tg-icon2.png' %}"></a>
           </ul>
         </div>
         
@@ -62,6 +76,7 @@
 
 
   {% block content %}
+  
   {% endblock %}
 
   </div>

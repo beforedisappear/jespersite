@@ -74,14 +74,14 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.telegram.TelegramAuth',
-    'social_core.backends.vk.VKOAuth2',    
+    'django.contrib.auth.backends.ModelBackend',    # бекенд классической аутентификации
+    'social_core.backends.google.GoogleOAuth2',     # бекенд авторизации через google
+    'social_core.backends.telegram.TelegramAuth',   # бекенд авторизации через telegram
+    'social_core.backends.vk.VKOAuth2',             # бекенд авторизации через VK
 )
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '404096088666-7q3l3p5r0ts1mkh31ta9flhep2jkpe49.apps.googleusercontent.com' # Google Consumer Key
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' # Google Consumer Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'                                   # Google Consumer Secret
 
 SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = '5777561664:AAEM6PVmJ689eUbSQXtHO4z502u0HDNCc5M'
 

@@ -34,7 +34,7 @@ body.lock {
 .navbar {
   width: 100%;
   height: 60px;
-  box-shadow : 0 4px 10px rgba(0, 0, 0, .1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
   -webkit-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .1);
 }
 
@@ -62,6 +62,7 @@ body.lock {
   text-decoration: none;
   padding: 15px;
   transition: all .07s ease-in-out;
+  margin-left: 15px;
 }
 
 .navbar-menu li a:hover {
@@ -92,7 +93,15 @@ body.lock {
   width: 27px;
   height: 27px;
   background-size: 287px;
+}
 
+/*logout icon*/
+.icon2 {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-size: 287px;
 }
 
 .navbar-brand ul {
@@ -100,6 +109,58 @@ body.lock {
   margin-left: 15px;
   bottom: 4px;
 }
+
+/* toggle menu */
+
+.dropbtn {
+  color: black;
+  background-color: #f6f6f6;
+  ;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 40px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  position: relative;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none !important;
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  padding-left: 35px;
+  text-align: center;
+  justify-content: center;
+}
+
+.dropdown-content a img {
+  position: absolute;
+  left: 0;
+  top: 25%;
+  margin-left: 10px;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 
 /* footer */
 
@@ -371,24 +432,25 @@ h4,
   padding-left: 0;
   padding-right: 0;
 }
+
 /* */
 
 .panel-body {
-  background:#fff;
+  background: #fff;
 }
 
 .cover-photo {
   position: relative;
 }
 
-a:hover{
-  text-decoration:none;    
+a:hover {
+  text-decoration: none;
 }
 
 .fb-timeline-img img {
   width: 100%;
-height:auto;
-max-height:280px;
+  height: auto;
+  max-height: 280px;
   border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
 }
@@ -411,7 +473,8 @@ max-height:280px;
   position: relative;
 }
 
-.p-text-area, .p-text-area:focus {
+.p-text-area,
+.p-text-area:focus {
   border: none;
   font-weight: 300;
   box-shadow: none;
@@ -426,7 +489,7 @@ max-height:280px;
 }
 
 
-.fb-name  {
+.fb-name {
   bottom: 5px;
   left: 175px;
   position: absolute;
@@ -442,7 +505,7 @@ max-height:280px;
 .fb-user-thumb {
   float: left;
   width: 70px;
-  margin-right:15px;
+  margin-right: 15px;
 }
 
 .fb-user-thumb img {
@@ -472,10 +535,11 @@ max-height:280px;
 }
 
 .fb-border {
-  border-top:1px solid #ebeef5;
+  border-top: 1px solid #ebeef5;
 }
 
-.fb-time-action span, .fb-time-action a {
+.fb-time-action span,
+.fb-time-action a {
   margin-right: 5px;
 }
 
@@ -491,7 +555,8 @@ max-height:280px;
   color: #5a5a5a;
 }
 
-.fb-status-container, .fb-comments li {
+.fb-status-container,
+.fb-comments li {
   margin: 0 -15px 0 -15px;
   padding: 0 15px;
 }
@@ -501,11 +566,11 @@ max-height:280px;
 }
 
 .fb-comments li {
-  border-top:1px solid #ebeef5;
+  border-top: 1px solid #ebeef5;
   padding: 15px;
 }
 
-.fb-comments .cmt-thumb  {
+.fb-comments .cmt-thumb {
   width: 50px;
   float: left;
   margin-right: 15px;
@@ -519,7 +584,7 @@ max-height:280px;
   padding-top: 5px;
 }
 
-.fb-comments .cmt-details a  {
+.fb-comments .cmt-details a {
   font-size: 14px;
   font-weight: bold;
 }
@@ -534,7 +599,7 @@ max-height:280px;
   width: 90%;
 }
 
-.cmt-form textarea{
+.cmt-form textarea {
   height: 50px;
   line-height: 35px;
 }
@@ -551,38 +616,38 @@ max-height:280px;
 }
 
 .fb-timeliner ul {
-  margin-left:15px;
+  margin-left: 15px;
   margin-bottom: 20px;
-  list-style-type:none;
+  list-style-type: none;
 }
 
-.fb-comments{
-  list-style-type:none;
+.fb-comments {
+  list-style-type: none;
 }
 
 .fb-timeliner ul li {
   margin-bottom: 3px;
 }
 
-.fb-timeliner ul li a{
+.fb-timeliner ul li a {
   color: #999797;
   border-left: 4px solid #d3d7dd;
-  padding-left:10px;
+  padding-left: 10px;
   padding-top: 3px;
   padding-bottom: 3px;
   display: block;
 }
 
-.fb-timeliner ul li a:hover{
+.fb-timeliner ul li a:hover {
   color: #999797;
   border-left: 4px solid #b1b1b1;
-  padding-left:10px;
+  padding-left: 10px;
 }
 
-.fb-timeliner ul li.active a{
+.fb-timeliner ul li.active a {
   color: #7a7a7a;
   border-left: 4px solid #7a7a7a;
-  padding-left:10px;
+  padding-left: 10px;
 }
 
 .recent-highlight {
@@ -623,6 +688,7 @@ max-height:280px;
   text-align: center;
   margin-bottom: 10px;
 }
+
 .popup__content {
   background-color: #fff;
   color: #000;
@@ -636,14 +702,14 @@ max-height:280px;
   right: 10px;
   top: 10px;
   font-size: 20px;
-  color:#000;
+  color: #000;
   transform: rotate(-45deg);
-  text-decoration: none!important;
+  text-decoration: none !important;
 }
 
 /* tg / vk / goggle button */
 
-.box-btns{
+.box-btns {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -661,14 +727,13 @@ max-height:280px;
   text-decoration: none;
   width: 200px;
   height: 40px;
-  margin-bottom:5px;
+  margin-bottom: 5px;
 }
 
-.btn_telegram:hover
-{
+.btn_telegram:hover {
   text-decoration: none;
   color: #ffffff;
-  cursor: default;
+  cursor: pointer;
 }
 
 .btn_vk {
@@ -683,14 +748,13 @@ max-height:280px;
   cursor: default;
   width: 200px;
   height: 40px;
-  margin-bottom:5px;
+  margin-bottom: 5px;
 }
 
-.btn_vk:hover
-{
+.btn_vk:hover {
   text-decoration: none;
   color: #ffffff;
-  cursor: default;
+  cursor: pointer;
 }
 
 .btn_google {
@@ -706,12 +770,11 @@ max-height:280px;
   cursor: default;
   width: 200px;
   height: 40px;
-  margin-bottom:5px;
+  margin-bottom: 5px;
 }
 
-.btn_google:hover
-{
+.btn_google:hover {
   text-decoration: none;
   color: #ffffff;
-  cursor: default;
+  cursor: pointer;
 }
