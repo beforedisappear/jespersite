@@ -456,12 +456,15 @@ a:hover {
 }
 
 .profile-thumb img {
+  object-fit: cover;
   width: 140px;
   height: 140px;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  margin-top: -90px;
-  border: 3px solid #fff;
+  overflow: hidden;
+  z-index: 10;
+  margin-top: -8.75rem;
+  padding: 0.1875rem;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
 }
 
 .profile-info .panel-footer ul li a {
@@ -497,7 +500,6 @@ a:hover {
 
 .fb-name h2 a {
   color: #FFFFFF;
-  text-rendering: optimizelegibility;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
   font-size: 25px;
 }

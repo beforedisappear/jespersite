@@ -1,5 +1,6 @@
 <!--user page template-->
 {% extends 'mainapp/base.html' %}
+{% load static %} 
 
 {% block content %}
 
@@ -11,10 +12,43 @@
                     <img src="https://bootdey.com/img/Content/bg1.jpg" alt="personal-page-background">
                 </div>
                 <div class="fb-name">
-                    <h2><a href="#">{{user.username}}</a></h2>
+                    <h2><a href="#">{{user.first_name}}</a></h2>
                 </div>
             </div>
+            <div class="panel-body">
+                <div class="profile-thumb">
+                    <img src="{% static 'mainapp/images/DORAA.jpg' %}" alt="user avatar">
+                </div>
+
+                <!--https://getbootstrap.com/docs/5.2/components/navs-tabs/-->
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                    <!--раздел по умолчанию-->
+                    <!--в разделе статьи вывод стандартной модели из list_article -->
+                      <a class="nav-link active" aria-current="page" href="#">Статьи</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Подписчики</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Комментарии</a>
+                    </li>
+                </ul>
+
+            </div>
         </div>
+
+        <div class="panel profile-info">
+            <form>
+                <textarea class="form-control input-lg p-text-area" rows="2" placeholder="Whats in your mind today?"></textarea>
+            </form>
+            <footer class="panel-footer">
+                <ul class="nav nav-pills">
+                    <li type="button" class="btn btn-info pull-right">Post</li>
+                </ul>
+            </footer>
+        </div>
+        
     </div>
 </div>
 

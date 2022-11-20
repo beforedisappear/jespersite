@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
+    #'social_django.middleware.SocialAuthExceptionMiddleware', #debug false
 ]
 
 ROOT_URLCONF = 'jespersite.urls'
@@ -91,9 +91,7 @@ SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
                                 
 
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'                            # перенаправление при успешной авторизации
 
 WSGI_APPLICATION = 'jespersite.wsgi.application'
 
@@ -156,4 +154,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')        # формирование пути к каталогу media
 MEDIA_URL = '/media/'                               # префикс url адреса для медиа  файлов
 
-#AUTOSLUG_SLUGIFY_FUNCTION = 'autoslug.utils.translit_long'
