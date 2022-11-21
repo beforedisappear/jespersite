@@ -1,22 +1,23 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseNotFound
-from django.views.generic import ListView, DetailView
-
+from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import logout
 from .forms import *
 from .models import *
 
 
 # основная страница
 class HomePage(ListView):
-    model = articles # ссылка на модель (отображение записей в виде list)
-    template_name = 'mainapp/index.html' # путь к оторажаемому шаблону
-    context_object_name = 'posts' # переменная для хранения коллекции записей
+    model = articles  # ссылка на модель (отображение записей в виде list)
+    template_name = 'mainapp/index.html'  # путь к оторажаемому шаблону
+    context_object_name = 'posts'  # переменная для хранения коллекции записей
     extra_context = {'title': 'Главная страница'}
-    
+
     # метод отбора записей из БД
     def get_queryset(self):
         return articles.objects.filter(is_published=True).order_by('-time_create')
-    
+
 
 def economy(request):
     return render(request, 'mainapp/economy.html', {'title': 'Экономика'})
@@ -42,10 +43,10 @@ def life(request):
 # отображение статьи на её странице
 class ShowArtice(DetailView):
     model = articles
-    template_name = 'mainapp/article.html' 
-    slug_url_kwarg = 'post_slug' #своя переменная для слага
+    template_name = 'mainapp/article.html'
+    slug_url_kwarg = 'post_slug'  # своя переменная для слага
     context_object_name = 'post'
-        
+
 
 # функция представления персональной страницы юзера
 def personal_page(request):
@@ -71,3 +72,17 @@ def personal_page(request):
 # обработка исключения при несовпадении шаблона
 def PageNotFound(request, exception):
     return HttpResponseNotFound('<h>Страница не найдена</h>')
+
+
+class RegisterUser(CreateView):
+    # настройка в ЛК
+    pass
+
+
+class LoginUser(LoginView):
+    pass
+
+# выход
+def logout_user(request):
+    logout(request)
+    return redirect('home')
