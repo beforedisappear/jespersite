@@ -9,7 +9,9 @@
         <div class="panel">
             <div class="cover-photo">
                 <div class="fb-timeline-img">
-                    <img src="{% static 'mainapp/images/user-theme.jpg' %}" alt="personal-page-background">
+                    {% if user.theme %}
+                    <img src="{{ user.theme.url }}" alt="personal-page-background">
+                    {% endif %}
                 </div>
                 <div class="fb-name">
                     <h2><a href="#">{{user.first_name}}</a></h2>
@@ -17,7 +19,9 @@
             </div>
             <div class="panel-body">
                 <div class="profile-thumb">
-                    <img src="{% static 'mainapp/images/DORAA.jpg' %}" alt="user avatar">
+                    {% if user.userpic %}
+                    <img src="{{ user.userpic.url }}" alt="user avatar">
+                    {% endif %}
                 </div>
 
                 <!--https://getbootstrap.com/docs/5.2/components/navs-tabs/-->

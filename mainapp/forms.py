@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from .models import *
 
+
 class AddArticleForm(forms.ModelForm):
    #констуктор для невыбранного значения формы
    def __init__(self, *args, **kwargs):

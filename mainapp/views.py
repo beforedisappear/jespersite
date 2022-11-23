@@ -60,10 +60,8 @@ def personal_page(request):
     else:
         form = AddArticleForm()
     list_articles = articles.objects.order_by('-time_create')
-    list_users = User
     context = {
         'post': list_articles,
-        'users': list_users,
         'title': 'personal-page'
     }
     return render(request, 'mainapp/p.html', context)
