@@ -37,6 +37,7 @@ class articles(models.Model):
       self.slug = uuslug(self.title, instance=self)
       super(articles, self).save(*args, **kwargs) 
       
+   #тип файла
    def get_file_type(self):
       a = self.content.name.find('.')+1
       if self.content.name[a:] in ['jpg', 'png', 'heic']: return 'photo'

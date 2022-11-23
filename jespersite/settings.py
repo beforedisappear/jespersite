@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'social_django.middleware.SocialAuthExceptionMiddleware', #debug false
+    # 'social_django.middleware.SocialAuthExceptionMiddleware', #debug false
 ]
 
 ROOT_URLCONF = 'jespersite.urls'
@@ -65,8 +65,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
-                'social_django.context_processors.backends', 
+
+                'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
         },
@@ -74,14 +74,18 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',    # бекенд классической аутентификации
+    # бекенд классической аутентификации
+    'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.google.GoogleOAuth2',     # бекенд авторизации через google
-    'social_core.backends.telegram.TelegramAuth',   # бекенд авторизации через telegram
+    # бекенд авторизации через telegram
+    'social_core.backends.telegram.TelegramAuth',
     'social_core.backends.vk.VKOAuth2',             # бекенд авторизации через VK
 )
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '404096088666-7q3l3p5r0ts1mkh31ta9flhep2jkpe49.apps.googleusercontent.com' # Google Consumer Key
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'                                   # Google Consumer Secret
+# Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '404096088666-7q3l3p5r0ts1mkh31ta9flhep2jkpe49.apps.googleusercontent.com'
+# Google Consumer Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
 SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = '5777561664:AAEM6PVmJ689eUbSQXtHO4z502u0HDNCc5M'
 
@@ -89,9 +93,9 @@ SOCIAL_AUTH_VK_OAUTH2_KEY = '51474603'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'AYwPymlZbqaQkNeFZaU4'
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
-                                
 
-LOGIN_REDIRECT_URL = '/'                            # перенаправление при успешной авторизации
+# перенаправление при успешной авторизации
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'jespersite.wsgi.application'
 
@@ -142,15 +146,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 # обеспечение корректной работы перемещения всех стат. ф. перед эксплуатацией проекта
 
-STATIC_URL = '/static/'                             # префикс url адреса для статических файлов
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')      # путь к общей статической папке web сервера
-STATICFILES_DIRS = []                               # список нестандартных путей к статическим файлам
+# префикс url адреса для статических файлов
+STATIC_URL = '/static/'
+# путь к общей статической папке web сервера
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# список нестандартных путей к статическим файлам
+STATICFILES_DIRS = []
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')        # формирование пути к каталогу media
-MEDIA_URL = '/media/'                               # префикс url адреса для медиа  файлов
-
+# формирование пути к каталогу media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# префикс url адреса для медиа  файлов
+MEDIA_URL = '/media/'
