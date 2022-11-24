@@ -1,51 +1,67 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponseNotFound
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout
+from django.urls import reverse_lazy
 from .forms import *
 from .models import *
 
 
 # основная страница
 class HomePage(ListView):
-    model = articles  # ссылка на модель (отображение записей в виде list)
-    template_name = 'mainapp/index.html'  # путь к оторажаемому шаблону
-    context_object_name = 'posts'  # переменная для хранения коллекции записей
-    extra_context = {'title': 'Главная страница'}
+    template_name = 'mainapp/index.html'                # путь к оторажаемому шаблону
+    context_object_name = 'posts'                       # переменная для хранения коллекции записей
 
     # метод отбора записей из БД
     def get_queryset(self):
         return articles.objects.filter(is_published=True).order_by('-time_create')
+    
+    # формирование контекста страницы
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)    #получаем сформированный контекст
+        context['title'] = 'Главная страница'
+        return context
+        
+class economy(ListView):
+    template_name = 'mainapp/economy.html'
+    context_object_name = 'posts'
+    extra_context = {'title': 'Экономика'}
+    
+    # отбор записей в раздел экономика
+    def get_queryset(self):
+        return articles.objects.filter(is_published=True, section='economy').order_by('-time_create')
+    
+class dev(ListView):
+    template_name = 'mainapp/dev.html'
+    context_object_name = 'posts'
+    extra_context = {'title': 'Разработка | IT'}
+    
+    # отбор записей в раздел экономика
+    def get_queryset(self):
+        return articles.objects.filter(is_published=True, section='dev').order_by('-time_create')
+    
+class life(ListView):
+    template_name = 'mainapp/dev.html'
+    context_object_name = 'posts'
+    extra_context = {'title': 'Жизнь'}
+    
+    # отбор записей в раздел экономика
+    def get_queryset(self):
+        return articles.objects.filter(is_published=True, section='life').order_by('-time_create')
 
-
-def economy(request):
-    return render(request, 'mainapp/economy.html', {'title': 'Экономика'})
-
-
-def dev(request):
-    return render(request, 'mainapp/dev.html', {'title': 'Разработка | IT'})
-
-
-def life(request):
-    return render(request, 'mainapp/life.html', {'title': 'Жизнь'})
-
-
-# def show_article(request, post_slug):
-#     # находим статью в БД по slug
-#     article = get_object_or_404(articles, slug=post_slug)
-#     context = {
-#         'post': article,
-#         'title': article.title,
-#     }
-#     return render(request, 'mainapp/article.html', context=context)
 
 # отображение статьи на её странице
 class ShowArtice(DetailView):
     model = articles
     template_name = 'mainapp/article.html'
     slug_url_kwarg = 'post_slug'  # своя переменная для слага
-    context_object_name = 'post'
+    context_object_name = 'post'  # html
+    
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)    #получаем сформированный контекст
+        context['title'] = self.object.title
+        return context
 
 
 # функция представления персональной страницы юзера
@@ -59,26 +75,50 @@ def personal_page(request):
             return redirect('home')
     else:
         form = AddArticleForm()
-    list_articles = articles.objects.order_by('-time_create')
+    list_articles = articles.objects.filter(is_published=True).order_by('-time_create')
     context = {
         'post': list_articles,
         'title': 'personal-page'
     }
     return render(request, 'mainapp/p.html', context)
 
+class userpage(DetailView):
+    model = MyUser
+    template_name = 'mainapp/p.html'
+    slug_url_kwarg = 'username'  # своя переменная для слага
+
+    
+    def get(self, request, username):
+        user = get_object_or_404(MyUser, username=username)
+        return render(request, 'mainapp/p.html', {'thisuser': user})
+    
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     context = super().get_context_data(**kwargs)    #получаем сформированный контекст
+    #     user = get_object_or_404(MyUser, username=username)
+    #     context['thisuser'] = user
+    #     return context
+    
+
+class testpp(LoginRequiredMixin):
+    pass
+
+
+class AdminLogin(LoginView):
+    form_class = AuthenticationForm                  # форма авторизации пользователя 
+    template_name = 'mainapp/adminlogin.html'
+    
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)    #получаем сформированный контекст
+        context['title'] = 'Авторизация'
+        return context
+    
+    def get_success_url(self):
+        return reverse_lazy('home')
+
 
 # обработка исключения при несовпадении шаблона
 def PageNotFound(request, exception):
-    return HttpResponseNotFound('<h>Страница не найдена</h>')
-
-
-class RegisterUser(CreateView):
-    # настройка в ЛК
-    pass
-
-
-class LoginUser(LoginView):
-    pass
+    return render(request, 'mainapp/error.html')
 
 # выход
 def logout_user(request):
