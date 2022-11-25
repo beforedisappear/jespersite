@@ -12,7 +12,7 @@ class UserAdmin(UserAdmin):
         'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
     }),
     (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-    (_('Additional Info'), {'fields': ('userpic', 'theme', 'description')}),
+    (_('Additional Info'), {'fields': ('userpic', 'theme', 'description', 'userslug')}),
    )
 
 admin.site.register(MyUser, UserAdmin)

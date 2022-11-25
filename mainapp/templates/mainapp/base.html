@@ -58,8 +58,8 @@
             <div class="dropdown">
               <button class="dropbtn"><img class="icon2" src="{% static 'mainapp/images/user.ico' %}"></button>
               <div class="dropdown-content">
-                <a href="{% url 'user-page' user.username %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
-                <a href="{% url 'user-page-set' user.username %}"><img class="icon2" src="{% static 'mainapp/images/setting.png' %}">Настройки</a>
+                <a href="{% url 'user-page' user.userslug %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
+                <a href="{% url 'user-page-set' user.userslug %}"><img class="icon2" src="{% static 'mainapp/images/setting.png' %}">Настройки</a>
                 <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
               </div>
             </div>

@@ -2,19 +2,39 @@ from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 from django.urls import reverse
 from django.core.validators import FileExtensionValidator
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from uuslug import uuslug
 
 
 def user_directory_path(instance, filename):
-    # file will be uploaded to MEDIA_ROOT/user_<username>/<filename>
-    return 'user_{0}/{1}'.format(instance.username, filename)
+    # file will be uploaded to MEDIA_ROOT/users/user_<username>/<filename>
+    return 'users/user_{0}/{1}'.format(instance.username, filename)
 
 #расширяем встроенную модель User
 class MyUser(AbstractUser):
+   id = models.AutoField(primary_key=True)
+   userslug = models.SlugField(max_length=150, unique=True, db_index=True, verbose_name='UserSlug')
    userpic = models.ImageField(upload_to=user_directory_path, blank=True, verbose_name='Аватар')
    theme = models.ImageField(upload_to=user_directory_path, blank=True, verbose_name='Фон')
    description = models.CharField(max_length=150, blank=True, verbose_name='Пару слов о себе')
+   
+   def save(self, *args, **kwargs):
+      if not self.first_name:                                                             #базовый ник = login
+         self.first_name = self.username
+      if self.is_superuser:                                                               #slug for superuser                                      
+         self.userslug = self.username.lower().replace(' ', '-')
+      super(MyUser, self).save(*args, **kwargs)
+      self.update_user_slug() 
+      
+   def update_user_slug(self):
+      # You now have both access to self.id
+      if not self.is_superuser: 
+         #now have both access to self.id
+         self.userslug = str(self.id) + '-' + self.first_name.lower().replace(' ', '-') #slug for user
+         MyUser.objects.filter(id=self.id).update(userslug=self.userslug)
+
 
 #хранение контента
 class articles(models.Model):

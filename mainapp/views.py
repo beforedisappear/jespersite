@@ -97,30 +97,37 @@ class AdminLogin(LoginView):
 class userpage(DetailView):
     model = MyUser
     template_name = 'mainapp/p.html'
+    slug_url_kwarg = 'username'
+    slug_field = 'userslug'
 
-    
-    def get(self, request, username):
-        user = get_object_or_404(MyUser, username=username)
-        return render(request, 'mainapp/p.html', {'thisuser': user, 'title': 'JESPER — ' + user.first_name})
-    
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)    #получаем сформированный контекст
+    # def get(self, request, username):
     #     user = get_object_or_404(MyUser, username=username)
-    #     context['thisuser'] = user
-    #     return context
+    #     return render(request, 'mainapp/p.html', {'thisuser': user, 'title': 'JESPER — ' + user.first_name})
+    
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)    #получаем сформированный контекст
+        user = get_object_or_404(MyUser, userslug=self.kwargs['username'])
+        context['thisuser'] = user
+        context['title'] = 'JESPER — ' + user.first_name
+        return context
     
 
 class userpagesettings(DetailView):
     model = MyUser
     template_name = 'mainapp/psettings.html'
-    context_object_name = 'thisuser'
+    slug_url_kwarg = 'username'
+    slug_field = 'userslug'
     
-    def get(self, request, username):
-        user = get_object_or_404(MyUser, username=username)
-        return render(request, 'mainapp/psettings.html', {'thisuser': user, 'title': 'Настройки '})
+    # def get(self, request, username):
+    #     user = get_object_or_404(MyUser, username=username)
+    #     return render(request, 'mainapp/psettings.html', {'thisuser': user, 'title': 'Настройки '})
     
-    # def get_obj(self, username):
-    #     return get_object_or_404(MyUser, username=username)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)    #получаем сформированный контекст
+        user = get_object_or_404(MyUser, userslug=self.kwargs['username'])
+        context['thisuser'] = user
+        context['title'] = 'Настройки пользователя'
+        return context
 
     
 
@@ -131,4 +138,4 @@ def PageNotFound(request, exception):
 # выход
 def logout_user(request):
     logout(request)
-    return redirect('home')
+    return redirect('/')
