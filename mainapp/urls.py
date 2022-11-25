@@ -15,5 +15,6 @@ urlpatterns = [
     path('adminlogin/', AdminLogin.as_view(), name='admin login'),
     path('logout/', logout_user, name='logout'),
     path('page/<str:username>/', userpage.as_view(), name='user-page'),
-    path('social-auth/', include('social_django.urls', namespace='social')),#'social.apps.django_app.urls'
+    path('page/<str:username>/settings', userpagesettings.as_view(), name='user-page-set'),
+    path('social-auth/', include('social_django.urls', namespace='social')),
 ]

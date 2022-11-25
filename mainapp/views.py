@@ -82,27 +82,6 @@ def personal_page(request):
     }
     return render(request, 'mainapp/p.html', context)
 
-class userpage(DetailView):
-    model = MyUser
-    template_name = 'mainapp/p.html'
-    slug_url_kwarg = 'username'  # своя переменная для слага
-
-    
-    def get(self, request, username):
-        user = get_object_or_404(MyUser, username=username)
-        return render(request, 'mainapp/p.html', {'thisuser': user})
-    
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)    #получаем сформированный контекст
-    #     user = get_object_or_404(MyUser, username=username)
-    #     context['thisuser'] = user
-    #     return context
-    
-
-class testpp(LoginRequiredMixin):
-    pass
-
-
 class AdminLogin(LoginView):
     form_class = AuthenticationForm                  # форма авторизации пользователя 
     template_name = 'mainapp/adminlogin.html'
@@ -114,7 +93,36 @@ class AdminLogin(LoginView):
     
     def get_success_url(self):
         return reverse_lazy('home')
+    
+class userpage(DetailView):
+    model = MyUser
+    template_name = 'mainapp/p.html'
 
+    
+    def get(self, request, username):
+        user = get_object_or_404(MyUser, username=username)
+        return render(request, 'mainapp/p.html', {'thisuser': user, 'title': 'JESPER — ' + user.first_name})
+    
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     context = super().get_context_data(**kwargs)    #получаем сформированный контекст
+    #     user = get_object_or_404(MyUser, username=username)
+    #     context['thisuser'] = user
+    #     return context
+    
+
+class userpagesettings(DetailView):
+    model = MyUser
+    template_name = 'mainapp/psettings.html'
+    context_object_name = 'thisuser'
+    
+    def get(self, request, username):
+        user = get_object_or_404(MyUser, username=username)
+        return render(request, 'mainapp/psettings.html', {'thisuser': user, 'title': 'Настройки '})
+    
+    # def get_obj(self, username):
+    #     return get_object_or_404(MyUser, username=username)
+
+    
 
 # обработка исключения при несовпадении шаблона
 def PageNotFound(request, exception):
