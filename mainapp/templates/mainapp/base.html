@@ -32,61 +32,95 @@
   
 
 {% block mainmenu %}
-<div class='wrapper'>
+<!-- <div class='wrapper'> -->
 
-  <div class='content'>
+  <!-- <div class='content'> -->
 
-    <div class='navbar lock-padding'>
-
-      <div class='container'>
-        <a href="{% url 'home' %}" class='navbar-brand'>JESPER</a>
-  
-        <div class='navbar-wrap'>
-          <ul class='navbar-menu'>
-            <li><a href="{% url 'economy' %}">Экономика</a></li>
-            <li><a href="{% url 'dev' %}">Разработка | IT</a></li>
-            <li><a href="{% url 'life' %}">Жизнь</a></li>
-          </ul>
-        </div>
-
-        <!--icons-->
-        <div class='navbar-brand'>
-          <ul>
-            {% if request.user.is_authenticated %}
-
-            <div class="dropdown">
-              <button class="dropbtn"><img class="icon2" src="{% static 'mainapp/images/user.ico' %}"></button>
-              <div class="dropdown-content">
-                <a href="{% url 'personal-page' %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
-                <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
-              </div>
-            </div>
-      
-            {% else %}
-
-              <a href="#popup" class='popup-link'><img class="icon" src="{% static 'mainapp/images/auth.ico' %}"></a>
+    <div class='header'>
+      <div class='inner_header'>
+        <a href="{% url 'home' %}">
+          <div class='logo'>
+          <h1><span>IT</span>VERSE</h1>
+          </div>
+        </a>
+        <ul class='navigation'>
+          <a href="{% url 'economy' %}"><li>Экономика</li></a>
+          <a href="{% url 'dev' %}"><li>Разработка | IT</li></a>
+          <a href="{% url 'life' %}"><li>Жизнь</li></a>
+        </ul>
+        <ul class='authorization'>
+          {% if request.user.is_authenticated %}
               
-            {% endif %}
-            <a href="https://t.me/jespersite" target="_blank"><img class='icon' src="{% static 'mainapp/images/tg-icon2.png' %}"></a>
-          </ul>
-        </div>
+              <a href="{% url 'personal-page' %}"><li>Профиль</li></a>
+              <a href="{% url 'logout' %}"><li>Выход</li></a>
+              <!-- <div class="dropdown">
+                <button class="dropbtn"><img class="icon2" src="{% static 'mainapp/images/user.ico' %}"></button>
+                <div class="dropdown-content">
+                  <a href="{% url 'personal-page' %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
+                  <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
+                </div>
+              </div> -->
         
+              {% else %}
+
+                <a href="{% url 'register' %}"><li>Регистрация</li></a>
+                <a href="{% url 'login' %}"><li>Вход</li></a>
+                <!-- <a href="#popup" class='popup-link'><img class="icon" src="{% static 'mainapp/images/auth.ico' %}"></a> -->
+                
+              {% endif %}
+        </ul>    
       </div>
     </div>
+      <!-- <div class='navbar lock-padding'>
+
+        <div class='container'>
+          <a href="{% url 'home' %}" class='navbar-brand'>JESPER</a>
+    
+          <div class='navbar-wrap'>
+            <ul class='navbar-menu'>
+              <li><a href="{% url 'economy' %}">Экономика</a></li>
+              <li><a href="{% url 'dev' %}">Разработка | IT</a></li>
+              <li><a href="{% url 'life' %}">Жизнь</a></li>
+            </ul>
+          </div>
+
+          <div class='navbar-brand'>
+            <ul>
+              {% if request.user.is_authenticated %}
+
+              <div class="dropdown">
+                <button class="dropbtn"><img class="icon2" src="{% static 'mainapp/images/user.ico' %}"></button>
+                <div class="dropdown-content">
+                  <a href="{% url 'personal-page' %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
+                  <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
+                </div>
+              </div>
+        
+              {% else %}
+
+                <a href="#popup" class='popup-link'><img class="icon" src="{% static 'mainapp/images/auth.ico' %}"></a>
+                
+              {% endif %}
+              <a href="https://t.me/jespersite" target="_blank"><img class='icon' src="{% static 'mainapp/images/tg-icon2.png' %}"></a>
+            </ul>
+          </div>
+          
+        </div>
+      </div> -->
 
 
   {% block content %}
   
   {% endblock %}
 
-  </div>
+  <!-- </div> -->
 
-  <div class='footer'></div>
+  <!-- <div class='footer'></div> -->
 
-</div>
+<!-- </div> -->
 
 <!--popup navbar-->
-<div id="popup" class="popup">
+<!-- <div id="popup" class="popup">
   <div class="popup__body">
     <div class="popup__content">
       <a href="#header" class="popup__close close-popup">+</a>
@@ -105,11 +139,11 @@
             ⠀Войти через VK
           </a>
         </div>
-        
+      </div>  
     </div>
   </div>
 </div>
-<script src="{% static 'mainapp/js/main.js' %}"></script>
+<script src="{% static 'mainapp/js/main.js' %}"></script> -->
 {% endblock mainmenu %} 
 
 

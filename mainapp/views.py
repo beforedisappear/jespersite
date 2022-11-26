@@ -31,6 +31,13 @@ def life(request):
     return render(request, 'mainapp/life.html', {'title': 'Жизнь'})
 
 
+def login(request):
+    return render(request, 'mainapp/login.html', {'title': 'Вход'})
+
+
+def register(request):
+    return render(request, 'mainapp/register.html', {'title': 'Регистрация'})
+
 # def show_article(request, post_slug):
 #     # находим статью в БД по slug
 #     article = get_object_or_404(articles, slug=post_slug)
