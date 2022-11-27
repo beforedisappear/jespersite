@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, FormView
+from django.views.generic.edit import FormMixin   
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout
@@ -51,37 +52,41 @@ class life(ListView):
         return articles.objects.filter(is_published=True, section='life').order_by('-time_create')
 
 
-# отображение статьи на её странице
-class ShowArtice(DetailView):
+# отображение статьи на её странице + comments
+class ShowArtice(FormMixin, DetailView):
     model = articles
+    form_class = AddCommentForm
     template_name = 'mainapp/article.html'
     slug_url_kwarg = 'post_slug'  # своя переменная для слага
     context_object_name = 'post'  # html
     
     def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)    #получаем сформированный контекст
+        context = super(ShowArtice, self).get_context_data(**kwargs)    #получаем сформированный контекст
+        context['comments'] = context['post'].cmnts.filter(is_active=True)
         context['title'] = self.object.title
         return context
-
-
-# функция представления персональной страницы юзера
-def personal_page(request):
-    # сохранение введеных данных в случае их невалидности
-    if request.method == 'POST':
-        form = AddArticleForm(request.POST, request.FILES)
+     
+    # перенаправление на эту же страницу (исправить)
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('article', kwargs={'post_slug': self.get_object().slug})
+    
+    # переопределение метода для обработки post запроса
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
         if form.is_valid():
-            # добавление новой записи в БД
-            form.save()
-            return redirect('home')
-    else:
-        form = AddArticleForm()
-    list_articles = articles.objects.filter(is_published=True).order_by('-time_create')
-    context = {
-        'post': list_articles,
-        'title': 'personal-page'
-    }
-    return render(request, 'mainapp/p.html', context)
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
+    # сохранение формы в БД
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.post = self.get_object()
+        self.object.save()
+        return super().form_valid(form)
+   
+   
 class AdminLogin(LoginView):
     form_class = AuthenticationForm                  # форма авторизации пользователя 
     template_name = 'mainapp/adminlogin.html'

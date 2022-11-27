@@ -23,7 +23,14 @@ class articlesAdmin(admin.ModelAdmin):
    # кликабельность поля
    list_display_links = ('id', 'title')
    # по каким поляем работает поиск
-   search_fields = ['title', 'subtitle', 'text'] # 'user__author' ??
+   search_fields = ['title', 'subtitle', 'text'] 
 
 admin.site.register(articles, articlesAdmin)
 
+class commentsAdmin(admin.ModelAdmin):
+   model = comments
+   list_display = ('post', 'author', 'text', 'time_create', 'is_active')
+   list_display_links = ('post', 'author')
+   search_fields = ['post', 'author', 'text']
+
+admin.site.register(comments, commentsAdmin)

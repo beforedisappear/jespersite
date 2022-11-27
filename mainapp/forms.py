@@ -19,4 +19,15 @@ class AddArticleForm(forms.ModelForm):
          'title': forms.TextInput(attrs={'class': 'form-input'}),
          'text': forms.Textarea(attrs={'cols': 60, 'rows': 10}),
       }
-   
+      
+class AddCommentForm(forms.ModelForm):
+   class Meta:
+      model = comments
+      fields = ['text']
+      widgets = {
+         'text': forms.Textarea(attrs={"class": "form-control", "placeholder": "Add a comment", 
+                                       "rows": "3", "cols": "61",  'style':'resize:none;', }),
+      }
+      labels = {
+        'text': '',
+      }
