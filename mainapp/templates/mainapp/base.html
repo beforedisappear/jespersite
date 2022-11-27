@@ -11,26 +11,33 @@
   <title>{{ title }}</title>
   <meta charset="UTF-8">
   <!-- отображение сайта на других устройствах -->
-  <meta name="viewport" content="height=device-height,width=600,user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, intial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <!-- подключение файла оформления -->
   <link type='text/css' href="{% static 'mainapp/css/style.css' %}" rel='stylesheet'>
+  <!-- иконки соц сетей -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <!-- Fonts for blog section -->
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> -->
   <!-- загрузка иконок -->
-  <link rel='shortcut icon' href="{% static 'mainapp/images/test-icon.ico'%}" type="image/x-icon">
+  <!-- <link rel='shortcut icon' href="{% static 'mainapp/images/test-icon.ico'%}" type="image/x-icon"> -->
   <!-- Bootstrap reboot (для сброса стилей) -->
-  <link rel="stylesheet" href="{% static 'mainapp/libs/bootstrap-reboot.min.css'%}">
-	<!-- Bootstrap сетка -->
-	<link rel="stylesheet" href="{% static 'mainapp/libs/bootstrap-grid.min.css' %}">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="{% static 'mainapp/libs/bootstrap-reboot.min.css'%}"> -->
+	<!-- Bootstrap grid of articles -->
+	<!-- <link rel="stylesheet" href="{% static 'mainapp/libs/bootstrap-grid.min.css' %}"> -->
+  <!-- Opened article and personal page-->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<!-- Шрифты с Google Fonts -->
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+	<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> -->
   <!--article Bootstrap template-->
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> -->
 </head>
 
 <body>
   
-
 {% block mainmenu %}
 <!-- <div class='wrapper'> -->
 
@@ -109,12 +116,43 @@
       </div> -->
 
 
-  {% block content %}
+{% block content %}
   
-  {% endblock %}
+{% endblock %}
 
+    <footer class="footer">
+        <div class="footer-container">
+              <div class="row">
+                  <div class="footer-col">
+                    <h4>Категории</h4>
+                    <ul>
+                      <li><a href="{% url 'home' %}">Все новости</a></li>
+                      <li><a href="{% url 'economy' %}">Экономика</a></li>
+                      <li><a href="{% url 'dev' %}">Разработка | IT</a></li>
+                      <li><a href="{% url 'life' %}">Жизнь</a></li>
+                    </ul>
+                  </div>
+                  <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                      <li><a href="#">О сайте</a></li>
+                      <li><a href="#">Контакты</a></li>
+                      <li><a href="#">Реклама</a></li>
+                      <li><a href="#">Политика конфиденциальности</a></li>
+                    </ul>
+                  </div>
+                  <div class="footer-col">
+                    <h4>Социальные сети</h4>
+                    <div class="social-links"> 
+                      <a href="https://t.me/jespersite"><i class="fab fa-telegram"></i></a>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                  </div>
+              </div>
+        </div>
+    </footer>
   <!-- </div> -->
-
+  
   <!-- <div class='footer'></div> -->
 
 <!-- </div> -->
