@@ -26,6 +26,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <!--article Bootstrap template-->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -57,7 +58,8 @@
             <div class="dropdown">
               <button class="dropbtn"><img class="icon2" src="{% static 'mainapp/images/user.ico' %}"></button>
               <div class="dropdown-content">
-                <a href="{% url 'personal-page' %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
+                <a href="{% url 'user-page' user.userslug %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
+                <a href="{% url 'user-page-set' user.userslug %}"><img class="icon2" src="{% static 'mainapp/images/setting.png' %}">Настройки</a>
                 <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
               </div>
             </div>

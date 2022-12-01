@@ -37,7 +37,7 @@
           {% endif %}
             <a href="{{ p.get_absolute_url }}"><i class="fa fa-angle-double-right"></i> Continue reading</a>
             <span class="post-like text-muted tooltip-test" data-toggle="tooltip" data-original-title="I like this post!">
-              <i class="fa fa-heart"></i><span class="like-count">1</span>
+              <i class="fa fa-heart"></i><span class="like-count">{{p.lks.count}}</span>
             </span>
         </div>
       </div>
