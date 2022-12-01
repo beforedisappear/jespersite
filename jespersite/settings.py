@@ -73,14 +73,16 @@ TEMPLATES = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = (
-    # бекенд классической аутентификации
-    'django.contrib.auth.backends.ModelBackend',
+AUTHENTICATION_BACKENDS = (    
+    'django.contrib.auth.backends.ModelBackend',    # бекенд классической аутентификации
+    'social_core.backends.email.EmailAuth',
     'social_core.backends.google.GoogleOAuth2',     # бекенд авторизации через google
-    # бекенд авторизации через telegram
-    'social_core.backends.telegram.TelegramAuth',
+    'social_core.backends.telegram.TelegramAuth',   # бекенд авторизации через telegram
     'social_core.backends.vk.VKOAuth2',             # бекенд авторизации через VK
 )
+
+#SOCIAL_AUTH_EMAIL_FORM_URL = '/login-form/'
+#SOCIAL_AUTH_EMAIL_FORM_HTML = 
 
 # Google Consumer Key
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '404096088666-7q3l3p5r0ts1mkh31ta9flhep2jkpe49.apps.googleusercontent.com'
@@ -145,7 +147,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-# обеспечение корректной работы перемещения всех стат. ф. перед эксплуатацией проекта
+# обеспечение корректной работы перемещения всех стат. ф. перед deploy
 
 # префикс url адреса для статических файлов
 STATIC_URL = '/static/'

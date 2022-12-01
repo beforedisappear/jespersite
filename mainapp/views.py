@@ -63,6 +63,7 @@ class ShowArtice(FormMixin, DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ShowArtice, self).get_context_data(**kwargs)    #получаем сформированный контекст
         context['comments'] = context['post'].cmnts.filter(is_active=True)
+        context['likes'] = context['post'].lks.filter(like=True)
         context['title'] = self.object.title
         return context
      

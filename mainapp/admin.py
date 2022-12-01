@@ -34,3 +34,9 @@ class commentsAdmin(admin.ModelAdmin):
    search_fields = ['post', 'author', 'text']
 
 admin.site.register(comments, commentsAdmin)
+
+class likesAdmin(admin.ModelAdmin):
+   model = likes
+   list_display = ('post', 'liked_by', 'time_create')
+   
+admin.site.register(likes, likesAdmin)

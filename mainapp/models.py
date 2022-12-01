@@ -1,12 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
 from django.core.validators import FileExtensionValidator
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
-from uuslug import uuslug
-
+from uuslug import uuslug, slugify
 
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/users/user_<username>/<filename>
@@ -32,7 +29,7 @@ class MyUser(AbstractUser):
       # You now have both access to self.id
       if not self.is_superuser: 
          #now have both access to self.id
-         self.userslug = str(self.id) + '-' + self.first_name.lower().replace(' ', '-') #slug for user
+         self.userslug = str(self.id) + '-' + slugify(self.first_name.lower().replace(' ', '-')) #slug for user
          MyUser.objects.filter(id=self.id).update(userslug=self.userslug)
 
 
@@ -109,4 +106,13 @@ class сomment_answer(models.Model):
    is_active = models.BooleanField(default=True, verbose_name='Опубликовано') 
    
 class likes(models.Model):
-   pass
+   #many likes to one article
+   post = models.ForeignKey(articles, on_delete=models.CASCADE, related_name='lks', verbose_name='Статья')
+   like = models.BooleanField(default=False, verbose_name='Лайки')
+   liked_by = models.ForeignKey(MyUser, on_delete=models.DO_NOTHING, verbose_name='Автор лайка')
+   time_create = models.DateTimeField(auto_now_add=True)
+   
+   class Meta:
+      verbose_name = 'Лайки'
+      verbose_name_plural = 'Лайки'
+      ordering = ['time_create']
