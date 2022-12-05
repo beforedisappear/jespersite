@@ -1,10 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import ListView, DetailView, CreateView, FormView
-from django.views.generic.edit import FormMixin   
+from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import FormMixin
 from django.contrib.auth import logout
 from django.urls import reverse_lazy
+
 from .forms import *
 from .models import *
 
@@ -135,7 +135,13 @@ class userpagesettings(DetailView):
         context['title'] = 'Настройки пользователя'
         return context
 
-    
+def login(request):
+    return render(request, 'mainapp/login.html', {'title': 'Вход'})
+
+
+def register(request):
+    return render(request, 'mainapp/register.html', {'title': 'Регистрация'})
+
 
 # обработка исключения при несовпадении шаблона
 def PageNotFound(request, exception):

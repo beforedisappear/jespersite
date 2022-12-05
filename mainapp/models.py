@@ -5,6 +5,7 @@ from django.core.validators import FileExtensionValidator
 
 from uuslug import uuslug, slugify
 
+
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/users/user_<username>/<filename>
     return 'users/user_{0}/{1}'.format(instance.username, filename)
@@ -96,7 +97,7 @@ class comments(models.Model):
       verbose_name_plural = 'Комментарии'
       ordering = ['time_create']
    
-
+   
 class сomment_answer(models.Model):
    comment = models.ForeignKey(comments, on_delete=models.CASCADE)
    author = models.ForeignKey(MyUser, on_delete=models.DO_NOTHING,
