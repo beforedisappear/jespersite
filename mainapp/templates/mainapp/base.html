@@ -59,12 +59,13 @@
         <ul class='authorization'>
           {% if request.user.is_authenticated %}
               
-              <a href="{% url 'personal-page' %}"><li>Профиль</li></a>
+              <a href="{% url 'user-page' user.userslug %}"><li>Профиль</li></a>
+              <a href="{% url 'user-page-set' user.userslug %}"><li>Настройки</li></a>
               <a href="{% url 'logout' %}"><li>Выход</li></a>
               <!-- <div class="dropdown">
                 <button class="dropbtn"><img class="icon2" src="{% static 'mainapp/images/user.ico' %}"></button>
                 <div class="dropdown-content">
-                  <a href="{% url 'personal-page' %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
+                  <a href="{% url 'user-page' user.userslug %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
                   <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
                 </div>
               </div> -->
@@ -72,7 +73,7 @@
               {% else %}
 
                 <a href="{% url 'register' %}"><li>Регистрация</li></a>
-                <a href="{% url 'login' %}"><li>Вход</li></a>
+                <a href="{% url 'adminlogin' %}"><li>Вход</li></a>
                 <!-- <a href="#popup" class='popup-link'><img class="icon" src="{% static 'mainapp/images/auth.ico' %}"></a> -->
                 
               {% endif %}
