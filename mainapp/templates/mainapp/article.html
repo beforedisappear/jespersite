@@ -1,6 +1,9 @@
 <!--site article template-->
 {% extends 'mainapp/base.html' %}
 
+<!--site article template-->
+{% extends 'mainapp/base.html' %}
+
 {% block content %}
 
 <div class="container bootstrap snippets bootdey">
@@ -12,15 +15,16 @@
 
                   <!--user avatar-->
                   <div class="pull-left image">
-                     <img src="https://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                     <a href="{% url 'user-page' post.author.userslug %}">
+                        <img src="{{post.author.userpic.url}}" class="img-circle avatar" alt="user profile image">
+                     </a>
                   </div>
                   <!--info about creator-->
                   <div class="pull-left meta">
                      <div class="title h5">
-                        <a href="#"><b>{{post.author}}</b></a>
+                        <a href="{% url 'user-page' post.author.userslug %}"><b>{{post.author}}</b></a>
                      </div>
                      <h6 class="text-muted time">{{post.time_create}}</h6>
-                     
                   </div>
                       
                </div>
@@ -48,39 +52,46 @@
                   </div>
                   <!-- likes and reposts --> 
                   <div class="stats">
-                     <a href="#" class="btn btn-default stat-item">
-                         <i class="fa fa-thumbs-up icon"></i>228
-                     </a>
-                     <a href="#" class="btn btn-default stat-item">
-                         <i class="fa fa-share icon"></i>128
-                     </a>
+                     <a href="#" class="btn btn-default stat-item"><i class="fa fa-thumbs-up icon"></i>{{likes.count}}</a>
+                     <a href="#" class="btn btn-default stat-item"><i class="fa fa-share icon"></i>128</a>
                  </div>
                </div>
 
                <div class="post-footer">
 
                   <!--comments fields-->
-                  <div class="input-group"> 
-                     <input class="form-control" placeholder="Add a comment" type="text">
+                  {% if request.user.is_authenticated%}
+                  <form class="input-group" method="POST">
+                     {% csrf_token %}
+                     {{ form.as_p }}
                      <span class="input-group-addon">
-                         <a href="#"><i class="fa fa-edit"></i></a>  
+                     <button type="submit">
+                        <a href="#"><i class="fa fa-edit"></i></a>  
+                     </button>
                      </span>
-                  </div>
-                 
+                  </form>
+                  {% endif %}
+
                   <!--comments-->
                   <ul class="comments-list">
+
+                     {% for c in comments %}
+
                      <li class="comment">
-                        <a class="pull-left" href="#">
-                           <img class="avatar" src="https://bootdey.com/img/Content/user_3.jpg" alt="avatar">
+                        <a class="pull-left" href="{% url 'user-page' c.author.userslug %}">
+                           <img class="avatar" src="{{c.author.userpic.url}}" alt="userpic">
                         </a>
                         <div class="comment-body">
                            <div class="comment-heading">
-                                 <h4 class="user">Full name 1</h4>
-                                 <h5 class="time">7 minutes ago</h5>
+                                 <a href="{% url 'user-page' c.author.userslug %}"><h4 class="user">{{c.author}}</h4></a>
+                                 <a><h5 class="time">{{c.time_create}}</h5></a>
                            </div>
-                           <p>This is a comment bla bla bla</p>
+                           <p>{{c.text}}</p>
                         </div>
                      </li>
+
+                     {% endfor %}
+
                   </ul>
 
                </div>

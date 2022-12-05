@@ -9,15 +9,21 @@
         <div class="panel">
             <div class="cover-photo">
                 <div class="fb-timeline-img">
-                    <img src="{% static 'mainapp/images/user-theme.jpg' %}" alt="personal-page-background">
+                    {% if thisuser.theme %}
+                    <img src="{{ thisuser.theme.url }}" alt="user-page-background">
+                    {% endif %}
                 </div>
                 <div class="fb-name">
-                    <h2><a href="#">{{user.first_name}}</a></h2>
+                    <h2><a href="#">{{thisuser.first_name}}</a></h2>
+                    {% if user == thisuser %}
+                    {% endif %}
                 </div>
             </div>
             <div class="panel-body">
                 <div class="profile-thumb">
-                    <img src="{% static 'mainapp/images/DORAA.jpg' %}" alt="user avatar">
+                    {% if thisuser.userpic %}
+                    <img src="{{ thisuser.userpic.url }}" alt="userpic">
+                    {% endif %}
                 </div>
 
                 <!--https://getbootstrap.com/docs/5.2/components/navs-tabs/-->
