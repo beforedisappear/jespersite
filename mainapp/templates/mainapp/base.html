@@ -34,6 +34,7 @@
 	<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> -->
   <!--article Bootstrap template-->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -41,35 +42,34 @@
 {% block mainmenu %}
 <!-- <div class='wrapper'> -->
 
-  <div class='content'>
+  <!-- <div class='content'> -->
 
-    <div class='navbar lock-padding'>
-
-      <div class='container'>
-        <a href="{% url 'home' %}" class='navbar-brand'>JESPER</a>
-  
-        <div class='navbar-wrap'>
-          <ul class='navbar-menu'>
-            <li><a href="{% url 'economy' %}">Экономика</a></li>
-            <li><a href="{% url 'dev' %}">Разработка | IT</a></li>
-            <li><a href="{% url 'life' %}">Жизнь</a></li>
-          </ul>
-        </div>
-
-        <!--icons-->
-        <div class='navbar-brand'>
-          <ul>
-            {% if request.user.is_authenticated %}
-
-            <div class="dropdown">
-              <button class="dropbtn"><img class="icon2" src="{% static 'mainapp/images/user.ico' %}"></button>
-              <div class="dropdown-content">
-                <a href="{% url 'personal-page' %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
-                <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
-              </div>
-            </div>
-      
-            {% else %}
+    <div class='header'>
+      <div class='inner_header'>
+        <a href="{% url 'home' %}">
+          <div class='logo'>
+          <h1><span>IT</span>VERSE</h1>
+          </div>
+        </a>
+        <ul class='navigation'>
+          <a href="{% url 'economy' %}"><li>Экономика</li></a>
+          <a href="{% url 'dev' %}"><li>Разработка | IT</li></a>
+          <a href="{% url 'life' %}"><li>Жизнь</li></a>
+        </ul>
+        <ul class='authorization'>
+          {% if request.user.is_authenticated %}
+              
+              <a href="{% url 'personal-page' %}"><li>Профиль</li></a>
+              <a href="{% url 'logout' %}"><li>Выход</li></a>
+              <!-- <div class="dropdown">
+                <button class="dropbtn"><img class="icon2" src="{% static 'mainapp/images/user.ico' %}"></button>
+                <div class="dropdown-content">
+                  <a href="{% url 'personal-page' %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
+                  <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
+                </div>
+              </div> -->
+        
+              {% else %}
 
                 <a href="{% url 'register' %}"><li>Регистрация</li></a>
                 <a href="{% url 'login' %}"><li>Вход</li></a>
@@ -122,7 +122,6 @@
     <div class="popup__content">
       <a href="#header" class="popup__close close-popup">+</a>
       <div class="popup__title">Авторизация на SITE</div>
-
         <div class='box-btns'>
           <a class='btn_telegram'>
             <script async src="https://telegram.org/js/telegram-widget.js?21" data-userpic="false" data-telegram-login="jespersitebot" data-size="medium" data-auth-url="http://mysite.com/social-auth/complete/telegram" data-request-access="write"></script>
