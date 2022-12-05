@@ -74,11 +74,9 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    # бекенд классической аутентификации
-    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',    # бекенд классической аутентификации
     'social_core.backends.google.GoogleOAuth2',     # бекенд авторизации через google
-    # бекенд авторизации через telegram
-    'social_core.backends.telegram.TelegramAuth',
+    'social_core.backends.telegram.TelegramAuth',   # бекенд авторизации через telegram
     'social_core.backends.vk.VKOAuth2',             # бекенд авторизации через VK
 )
 
@@ -109,6 +107,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+AUTH_USER_MODEL = 'mainapp.MyUser'
 
 
 # Password validation
