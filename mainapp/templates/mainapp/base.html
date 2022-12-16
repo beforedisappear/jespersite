@@ -18,32 +18,14 @@
   <!-- иконки соц сетей -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <!-- Fonts for blog section -->
-  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> -->
-  <!-- загрузка иконок -->
-  <!-- <link rel='shortcut icon' href="{% static 'mainapp/images/test-icon.ico'%}" type="image/x-icon"> -->
-  <!-- Bootstrap reboot (для сброса стилей) -->
-  <!-- <link rel="stylesheet" href="{% static 'mainapp/libs/bootstrap-reboot.min.css'%}"> -->
-	<!-- Bootstrap grid of articles -->
-	<!-- <link rel="stylesheet" href="{% static 'mainapp/libs/bootstrap-grid.min.css' %}"> -->
-  <!-- Opened article and personal page-->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-	<!-- Шрифты с Google Fonts -->
-	<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> -->
-  <!--article Bootstrap template-->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
   
 {% block mainmenu %}
-<!-- <div class='wrapper'> -->
-
-  <!-- <div class='content'> -->
-
+  <div class='wrapper'>
     <div class='header'>
       <div class='inner_header'>
         <a href="{% url 'home' %}">
@@ -62,25 +44,27 @@
               <a href="{% url 'user-page' user.userslug %}"><li>Профиль</li></a>
               <a href="{% url 'user-page-set' user.userslug %}"><li>Настройки</li></a>
               <a href="{% url 'logout' %}"><li>Выход</li></a>
-              <!-- <div class="dropdown">
-                <button class="dropbtn"><img class="icon2" src="{% static 'mainapp/images/user.ico' %}"></button>
+              
+              
+              <li class="dropdown">
+                <button class="dropbtn"><img class="icon" src="{% static 'mainapp/images/icic.png' %}"></button>
                 <div class="dropdown-content">
                   <a href="{% url 'user-page' user.userslug %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
                   <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
                 </div>
-              </div> -->
-        
+              </li>
+
               {% else %}
 
-                <a href="{% url 'register' %}"><li>Регистрация</li></a>
-                <a href="{% url 'adminlogin' %}"><li>Вход</li></a>
-                <!-- <a href="#popup" class='popup-link'><img class="icon" src="{% static 'mainapp/images/auth.ico' %}"></a> -->
+                <!--<a href="{% url 'register' %}"><li>Регистрация</li></a>-->
+                <!--<a href="{% url 'adminlogin' %}"><li>Вход</li></a>-->
+                <a href="#popup" class='popup-link'><li>Вход</li></a>
                 
               {% endif %}
         </ul>    
       </div>
     </div>
-
+  </div>
 
 {% block content %}
 {% endblock %}
@@ -118,29 +102,27 @@
     </footer>
 
 <!--popup navbar-->
-<!-- <div id="popup" class="popup">
+<div id="popup" class="popup">
   <div class="popup__body">
     <div class="popup__content">
       <a href="#header" class="popup__close close-popup">+</a>
-      <div class="popup__title">Авторизация на SITE</div>
+      <div class="popup__title">ITVERSE | АВТОРИЗАЦИЯ</div>
         <div class='box-btns'>
           <a class='btn_telegram'>
             <script async src="https://telegram.org/js/telegram-widget.js?21" data-userpic="false" data-telegram-login="jespersitebot" data-size="medium" data-auth-url="http://mysite.com/social-auth/complete/telegram" data-request-access="write"></script>
           </a>
           <a href="{% url "social:begin" "google-oauth2" %}" class="btn_google">
-            <img src="{% static 'mainapp/images/google.png' %}" width='21px' height='21px' >
-            ⠀Войти через Google
+            <img src="{% static 'mainapp/images/google.png' %}" width='21px' height='21px'>&nbspВойти через Google
           </a>
           <a href="{% url "social:begin" "vk-oauth2" %}" class="btn_vk" data-toggle="tooltip">
-            <img src="{% static 'mainapp/images/vk.png' %}" width='25px' height='25px' >
-            ⠀Войти через VK
+            <img src="{% static 'mainapp/images/vk.png' %}" width='25px' height='25px'>&nbspВойти через VK
           </a>
         </div>
       </div>  
     </div>
   </div>
 </div>
-<script src="{% static 'mainapp/js/main.js' %}"></script> -->
+<script src="{% static 'mainapp/js/main.js' %}"></script>
 {% endblock mainmenu %} 
 
 
