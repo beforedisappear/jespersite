@@ -1,5 +1,4 @@
 <!-- base template (dry) -->
-
 {% load static %} <!-- загрузка тега для подключения внешних файлов -->
 
 <!DOCTYPE html>
@@ -40,16 +39,18 @@
         </ul>
         <ul class='authorization'>
           {% if request.user.is_authenticated %}
-              
+
+              {% comment %} 
               <a href="{% url 'user-page' user.userslug %}"><li>Профиль</li></a>
               <a href="{% url 'user-page-set' user.userslug %}"><li>Настройки</li></a>
               <a href="{% url 'logout' %}"><li>Выход</li></a>
-              
+              {% endcomment %}
               
               <li class="dropdown">
                 <button class="dropbtn"><img class="icon" src="{% static 'mainapp/images/icic.png' %}"></button>
                 <div class="dropdown-content">
                   <a href="{% url 'user-page' user.userslug %}"><img class="icon2" src="{% static 'mainapp/images/user.png' %}">Профиль</a>
+                  <a href="{% url 'user-page-set' user.userslug %}"><img class="icon2" src="{% static 'mainapp/images/setting.png' %}">Настройки</a>
                   <a href="{% url 'logout' %}"><img class="icon2" src="{% static 'mainapp/images/logout.png' %}">Выйти</a>
                 </div>
               </li>
@@ -94,7 +95,7 @@
                     <h4>Социальные сети</h4>
                     <div class="social-links"> 
                       <a href="https://t.me/jespersite"><i class="fab fa-telegram"></i></a>
-                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="{% url 'home' %}"><i class="fab fa-instagram"></i></a>
                     </div>
                   </div>
               </div>

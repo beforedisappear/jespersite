@@ -151,6 +151,25 @@
                </div>
            </div>
        </div>
+
+      {% if request.user.is_authenticated%}
+         <form class="input-group" method="POST">
+         {% csrf_token %}
+         {{ form.as_p }}
+            <span class="input-group-addon">
+               <button type="submit">
+                  <a href="#"><i class="fa fa-edit"></i></a>  
+               </button>
+            </span>
+         </form>
+      {% endif %}
+                  
+      {% for c in comments %}
+         <a href="{% url 'user-page' c.author.userslug %}"><h4>{{c.author}}</h4></a>
+         <a><h5>{{c.time_create}}</h5></a>
+         <p>{{c.text}}</p>
+      {% endfor %}
+
    </div>
 </section>
 

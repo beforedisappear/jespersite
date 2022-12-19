@@ -69,7 +69,7 @@ class ShowArtice(FormMixin, DetailView):
      
     # перенаправление на эту же страницу (исправить)
     def get_success_url(self, **kwargs):
-        return reverse_lazy('article', kwargs={'post_slug': self.get_object().slug})
+        return reverse_lazy('article', kwargs={'post_slug': self.get_object().slug, 'section_slug':self.get_object().section})
     
     # переопределение метода для обработки post запроса
     def post(self, request, *args, **kwargs):
@@ -108,13 +108,13 @@ class userpage(DetailView):
 
     # def get(self, request, username):
     #     user = get_object_or_404(MyUser, username=username)
-    #     return render(request, 'mainapp/p.html', {'thisuser': user, 'title': 'JESPER — ' + user.first_name})
+    #     return render(request, 'mainapp/p.html', {'thisuser': user, 'title': 'ITVERSE — ' + user.first_name})
     
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)    #получаем сформированный контекст
         user = get_object_or_404(MyUser, userslug=self.kwargs['username'])
         context['thisuser'] = user
-        context['title'] = 'JESPER — ' + user.first_name
+        context['title'] = 'ITVERSE — ' + user.first_name
         return context
     
 

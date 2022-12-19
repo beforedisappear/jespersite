@@ -56,7 +56,7 @@ class articles(models.Model):
    #формирование маршрута к конкретной записи
    def get_absolute_url(self):
       # 'article' - имя маршрута в urls.py
-      return reverse("article", kwargs={"post_slug": self.slug})
+      return reverse("article", kwargs={"post_slug": self.slug,"section_slug": self.section})
    
    def __unicode__(self):
       return self.title
